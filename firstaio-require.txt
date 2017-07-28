@@ -1,0 +1,14 @@
+﻿Pillow
+	Pillow olefile
+sqlalchemy
+	sqlalchemy 链接mysql需要mysql-connector-python
+flask
+	flask click jinja2 markupsafe werkzeug itsdangerous
+aiohttp
+	aiohttp async_timeout chardet multidict yarl
+aiomysql
+	aiomysql pymysql
+watchdog
+	watchdog pathtools argh pyyaml
+markdown2
+	markdown2
