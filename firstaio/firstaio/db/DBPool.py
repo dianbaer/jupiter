@@ -52,7 +52,7 @@ class DBPoolC():
 
 async def testDBInit(loop):
     pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3307, host='localhost')
-    rs = await DBPoolC.select("select * from users", (), 3)
+    rs = await DBPoolC.select("select * from users", (), 1)
     logging.info(rs)
 
 

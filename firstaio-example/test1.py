@@ -1,17 +1,16 @@
 import logging
 
-from firstaio.aioinit import AioInit
 from firstaio.aioinit.AioInit import AioInitC
 from firstaio.config.ConfigDefault import firstAioConfigDefault
 from firstaio.config.ConfigOverride import firstAioConfigOverride
 from firstaio.config.ConfigUtil import ConfigUtilC
-from firstaio.db.DBPool import DBPoolC
+
+logging.basicConfig(level=logging.INFO)
 
 firstAioConfig = ConfigUtilC.init(firstAioConfigDefault, firstAioConfigOverride)
-print(firstAioConfig.debug)
-print(firstAioConfig.db.host)
-print(firstAioConfig.db.host)
-logging.basicConfig(level=logging.INFO)
+logging.info(firstAioConfig.debug)
+logging.info(firstAioConfig.db.host)
+logging.info(firstAioConfig.db.host)
 AioInitC.run(
     host=firstAioConfig.db.host,
     port=firstAioConfig.db.port,
