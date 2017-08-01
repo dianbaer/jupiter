@@ -6,7 +6,7 @@ class GoodDictC(dict):
         try:
             return self[item]
         except KeyError:
-            raise AttributeError('key:%s,is not found' % item)
+            raise AttributeError(r"'GoodDictC' object has no attribute '%s'" % item)
 
     def __setattr__(self, key, value):
         self[key] = value
