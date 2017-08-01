@@ -31,3 +31,4 @@ class ModelMetaclassC(type):
         attrs['__table__'] = tableName
         attrs['__primary_key__'] = primaryKey
         attrs['__fields__'] = fields
+        return type.__new__(cls, name, bases, attrs)

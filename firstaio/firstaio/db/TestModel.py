@@ -3,19 +3,9 @@ import uuid
 
 import logging
 
-from firstaio.db.Field import StringFieldC, BooleanFieldC, FloatFieldC, TextFieldC, IntegerFieldC
-from firstaio.db.Model import ModelC
-
-
-class TestModelC(ModelC):
-    __table__ = 'test'
-    id = StringFieldC(primary_key=True, default=uuid.uuid4().hex, ddl='varchar(50)')
-    admin = BooleanFieldC()
-    create_at = FloatFieldC(default=time.time)
-    content = TextFieldC()
-    count = IntegerFieldC()
-
+from firstaio.db.Model import TestModelC
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
-    test = TestModelC()
+    test = TestModelC(id=uuid.uuid4().hex, admin=False, create_at=time.time, content='xxxxxx', count=1)
+    print(test)
