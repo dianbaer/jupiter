@@ -25,7 +25,7 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     AioInitC.run(
         host='localhost',
-        port=3307,
+        port=3306,
         user='root',
         db='awesome',
         password='root'

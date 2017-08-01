@@ -80,19 +80,19 @@ class DBPoolC():
                 raise
         return affected
 
+    @classmethod
+    async def testDBInit(cls, loop):
 
-async def testDBInit(loop):
-    pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3307, host='localhost',
-                              autocommit=False)
-    rs = await DBPoolC.select("select * from users", (), 1)
-    logging.info(rs)
-    affectRow = await DBPoolC.execute("insert into users values(?,?,?,?,?,?,?)",
-                                      (uuid.uuid4().hex, uuid.uuid4().hex, '222', 1, '444', '555', 1501094015.73242),
-                                      False)
-    logging.info(affectRow)
+        pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3306, host='localhost',
+                                  autocommit=False)
+        rs = await DBPoolC.select("select * from users", (), 1)
+        logging.info(rs)
+        affectRow = await DBPoolC.execute("insert into users values(?,?,?,?,?,?,?)", (
+            uuid.uuid4().hex, uuid.uuid4().hex, '222', 1, '444', '555', 1501094015.73242), False)
+        logging.info(affectRow)
 
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(testDBInit(loop))
+    loop.run_until_complete(DBPoolC.testDBInit(loop))

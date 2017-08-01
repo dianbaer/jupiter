@@ -39,7 +39,7 @@ class TextFieldC(FieldC):
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
-    str1 = StringFieldC('111',True,'xxxxxx','varchat(255)')
+    str1 = StringFieldC('111', True, 'xxxxxx', 'varchat(255)')
     logging.info(str1)
     bool1 = BooleanFieldC('222')
     logging.info(bool1)

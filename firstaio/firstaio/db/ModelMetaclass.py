@@ -6,4 +6,4 @@ class ModelMetaclassC(type):
         if name == 'ModelC':
             return type.__new__(cls, name, bases, attrs)
         tableName = attrs.get('__table__', None) or name
-        logging.info(tableName)
+        print(tableName)
