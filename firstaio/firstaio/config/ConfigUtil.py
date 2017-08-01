@@ -2,14 +2,14 @@ import logging
 
 from firstaio.config.ConfigDefault import firstAioConfigDefault
 from firstaio.config.ConfigOverride import firstAioConfigOverride
-from firstaio.config.GoodDict import GoodDict
+from firstaio.config.GoodDict import GoodDictC
 
 
 class ConfigUtilC():
     @classmethod
     def init(cls, configDefault, configOverride):
         mergeConfig = ConfigUtilC.merge(configDefault, configOverride)
-        firstAioConfig = GoodDict.toGoodDict(mergeConfig)
+        firstAioConfig = GoodDictC.toGoodDict(mergeConfig)
         return firstAioConfig
 
     @classmethod

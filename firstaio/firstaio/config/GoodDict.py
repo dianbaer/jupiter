@@ -1,6 +1,6 @@
-class GoodDict(dict):
+class GoodDictC(dict):
     def __init__(self, **kwargs):
-        super(GoodDict, self).__init__(**kwargs)
+        super(GoodDictC, self).__init__(**kwargs)
 
     def __getattr__(self, item):
         try:
@@ -13,7 +13,7 @@ class GoodDict(dict):
 
     @classmethod
     def toGoodDict(cls, d):
-        goodDict = GoodDict()
+        goodDict = GoodDictC()
         for k, v in d.items():
-            goodDict[k] = GoodDict.toGoodDict(v) if isinstance(v, dict) else v
+            goodDict[k] = GoodDictC.toGoodDict(v) if isinstance(v, dict) else v
         return goodDict
