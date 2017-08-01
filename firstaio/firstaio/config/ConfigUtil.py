@@ -3,12 +3,12 @@ from firstaio.config.ConfigOverride import firstAioConfigOverride
 from firstaio.config.GoodDict import GoodDict
 
 
-class ConfigUtil():
+class ConfigUtilC():
     @classmethod
     def init(cls, configDefault, configOverride):
-        mergeConfig = ConfigUtil.merge(configDefault, configOverride)
-        global firstAioConfig
+        mergeConfig = ConfigUtilC.merge(configDefault, configOverride)
         firstAioConfig = GoodDict.toGoodDict(mergeConfig)
+        return firstAioConfig
 
     @classmethod
     def merge(cls, default, override):
@@ -16,7 +16,7 @@ class ConfigUtil():
         for k, v in default.items():
             if k in override:
                 if isinstance(v, dict):
-                    r[k] = ConfigUtil.merge(v, override[k])
+                    r[k] = ConfigUtilC.merge(v, override[k])
                 else:
                     r[k] = override[k]
             else:
@@ -25,7 +25,7 @@ class ConfigUtil():
 
 
 if __name__ == '__main__':
-    ConfigUtil.init(firstAioConfigDefault, firstAioConfigOverride)
+    firstAioConfig = ConfigUtilC.init(firstAioConfigDefault, firstAioConfigOverride)
     print(firstAioConfig.debug)
     print(firstAioConfig.db.host)
     firstAioConfig.db.host = '172.27.108.76'
