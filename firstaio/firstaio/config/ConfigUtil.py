@@ -1,3 +1,5 @@
+import logging
+
 from firstaio.config.ConfigDefault import firstAioConfigDefault
 from firstaio.config.ConfigOverride import firstAioConfigOverride
 from firstaio.config.GoodDict import GoodDict
@@ -25,6 +27,7 @@ class ConfigUtilC():
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     firstAioConfig = ConfigUtilC.init(firstAioConfigDefault, firstAioConfigOverride)
     print(firstAioConfig.debug)
     print(firstAioConfig.db.host)

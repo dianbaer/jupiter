@@ -1,0 +1,62 @@
+import uuid
+
+import aiomysql
+import logging
+
+import asyncio
+
+
+class DBPoolC():
+    @classmethod
+    async def init(cls, loop, **kwargs):
+        logging.info('aiomysql.create_pool start')
+        global dbPool
+        dbPool = await aiomysql.create_pool(
+            host=kwargs.get('host', 'localhost'),
+            port=kwargs.get('port', 3306),
+            user=kwargs['user'],
+            password=kwargs['password'],
+            db=kwargs['db'],
+            charset=kwargs.get('charset', 'utf8'),
+            autocommit=kwargs.get('autocommit', True),
+            maxsize=kwargs.get('maxsize', 10),
+            minsize=kwargs.get('minsize', 1),
+            loop=loop
+        )
+        logging.info('aiomysql.create_pool end')
+        return dbPool
+
+    @classmethod
+    async def select(cls, sql, args=(), size=None):
+        uid = uuid.uuid4().hex
+        logging.info("uid:%s,DBPoolC.select get conn start" % (uid,))
+        with (await dbPool) as conn:
+            logging.info("uid:%s,DBPoolC.select get conn end %s" % (uid, conn))
+            logging.info("uid:%s,DBPoolC.select get cursor start" % (uid,))
+            cur = await conn.cursor()
+            logging.info("uid:%s,DBPoolC.select get cursor end %s" % (uid, cur))
+            sql = sql.replace('?', '%s')
+            logging.info("uid:%s,DBPoolC.select execute start " % (uid,))
+            await cur.execute(sql, args)
+            logging.info("uid:%s,DBPoolC.select execute end " % (uid,))
+            if size:
+                logging.info("uid:%s,DBPoolC.select fetchmany start " % (uid,))
+                rs = await cur.fetchmany(size)
+                logging.info("uid:%s,DBPoolC.select fetchmany end " % (uid,))
+            else:
+                logging.info("uid:%s,DBPoolC.select fetchall start " % (uid,))
+                rs = await cur.fetchall()
+                logging.info("uid:%s,DBPoolC.select fetchall end " % (uid,))
+        return rs
+
+
+async def testDBInit(loop):
+    pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3307, host='localhost')
+    rs = await DBPoolC.select("select * from users", (), 3)
+    logging.info(rs)
+
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(testDBInit(loop))
