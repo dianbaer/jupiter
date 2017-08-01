@@ -29,12 +29,12 @@ class DBPoolC():
     @classmethod
     async def select(cls, sql, args=(), size=None):
         uid = uuid.uuid4().hex
-        logging.info("uid:%s,DBPoolC.select get conn start" % (uid,))
+        logging.info("uid:%s,DBPoolC.select get conn start " % (uid,))
         with (await dbPool) as conn:
-            logging.info("uid:%s,DBPoolC.select get conn end %s" % (uid, conn))
-            logging.info("uid:%s,DBPoolC.select get cursor start" % (uid,))
+            logging.info("uid:%s,DBPoolC.select get conn end %s " % (uid, conn))
+            logging.info("uid:%s,DBPoolC.select get cursor start " % (uid,))
             cur = await conn.cursor()
-            logging.info("uid:%s,DBPoolC.select get cursor end %s" % (uid, cur))
+            logging.info("uid:%s,DBPoolC.select get cursor end %s " % (uid, cur))
             sql = sql.replace('?', '%s')
             logging.info("uid:%s,DBPoolC.select execute start " % (uid,))
             await cur.execute(sql, args)
@@ -49,11 +49,47 @@ class DBPoolC():
                 logging.info("uid:%s,DBPoolC.select fetchall end " % (uid,))
         return rs
 
+    @classmethod
+    async def execute(cls, sql, args=(), autocommit=True):
+        uid = uuid.uuid4().hex
+        logging.info("uid:%s,DBPoolC.execute get conn start " % (uid,))
+        with (await dbPool) as conn:
+            logging.info("uid:%s,DBPoolC.execute get conn end %s " % (uid, conn))
+            if not autocommit:
+                logging.info("uid:%s,DBPoolC.execute conn.begin start " % (uid,))
+                await conn.begin()
+                logging.info("uid:%s,DBPoolC.execute conn.begin end " % (uid,))
+            try:
+                logging.info("uid:%s,DBPoolC.execute get cursor start " % (uid,))
+                cur = await conn.cursor()
+                logging.info("uid:%s,DBPoolC.execute get cursor end %s " % (uid, cur))
+                sql = sql.replace('?', '%s')
+                logging.info("uid:%s,DBPoolC.execute execute start " % (uid,))
+                await cur.execute(sql, args)
+                affected = cur.rowcount
+                logging.info("uid:%s,DBPoolC.execute execute end affected count %s " % (uid, affected))
+                if not autocommit:
+                    logging.info("uid:%s,DBPoolC.execute conn.commit start " % (uid,))
+                    await conn.commit()
+                    logging.info("uid:%s,DBPoolC.execute conn.commit end " % (uid,))
+            except BaseException as e:
+                if not autocommit:
+                    logging.info("uid:%s,DBPoolC.execute conn.rollback start " % (uid,))
+                    await conn.rollback()
+                    logging.info("uid:%s,DBPoolC.execute conn.rollback end " % (uid,))
+                raise
+        return affected
+
 
 async def testDBInit(loop):
-    pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3307, host='localhost')
+    pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3307, host='localhost',
+                              autocommit=True)
     rs = await DBPoolC.select("select * from users", (), 1)
     logging.info(rs)
+    affectRow = await DBPoolC.execute("insert into users values(?,?,?,?,?,?,?)",
+                                      (uuid.uuid4().hex, uuid.uuid4().hex, '222', 1, '444', '555', 1501094015.73242),
+                                      True)
+    logging.info(affectRow)
 
 
 if __name__ == '__main__':

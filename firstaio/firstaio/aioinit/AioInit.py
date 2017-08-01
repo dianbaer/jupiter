@@ -17,8 +17,8 @@ class AioInitC():
         logging.info('DBPoolC.init start')
         dbPool = await DBPoolC.init(loop, **kwargs)
         logging.info('DBPoolC.init end')
-        rs = await DBPoolC.select("select * from users", (), 3)
-        logging.info(list(rs))
+        # rs = await DBPoolC.select("select * from users", (), 3)
+        # logging.info(list(rs))
 
 
 if __name__ == '__main__':
