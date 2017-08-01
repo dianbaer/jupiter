@@ -30,4 +30,3 @@ if __name__ == '__main__':
     print(firstAioConfig.db.host)
     firstAioConfig.db.host = '172.27.108.76'
     print(firstAioConfig.db.host)
-    print(firstAioConfig.db1.host1)
