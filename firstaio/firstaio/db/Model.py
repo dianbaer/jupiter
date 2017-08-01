@@ -9,7 +9,6 @@ from firstaio.db.Field import StringFieldC, BooleanFieldC, FloatFieldC, TextFiel
 class ModelC(dict, metaclass=ModelMetaclassC):
     def __init__(self, **kwargs):
         super(ModelC, self).__init__(**kwargs)
-        print(self)
 
     def __getattr__(self, item):
         try:
