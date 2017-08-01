@@ -29,7 +29,7 @@ class ConfigUtilC():
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     firstAioConfig = ConfigUtilC.init(firstAioConfigDefault, firstAioConfigOverride)
-    print(firstAioConfig.debug)
-    print(firstAioConfig.db.host)
+    logging.info(firstAioConfig.debug)
+    logging.info(firstAioConfig.db.host)
     firstAioConfig.db.host = '172.27.108.76'
-    print(firstAioConfig.db.host)
+    logging.info(firstAioConfig.db.host)
