@@ -23,8 +23,12 @@ class AioInitC():
         logging.info('DBPoolC.init end')
         # rs = await DBPoolC.select("select * from users", (), 3)
         # logging.info(list(rs))
-        test = TestModelC(id=uuid.uuid4().hex, admin=False, create_at=time.time, content='xxxxxx', count=1)
-        logging.info(test)
+        # test = TestModelC(id=uuid.uuid4().hex, admin=False, create_at=time.time, content='xxxxxx', count=1)
+        # logging.info(test)
+        rs = await TestModelC.findAll(where="name='444'", limit=(5, 5), orderBy='id')
+        logging.info(rs)
+        num = await TestModelC.findNumber('count(id)', where="name='444'")
+        logging.info(num)
 
 
 if __name__ == '__main__':
