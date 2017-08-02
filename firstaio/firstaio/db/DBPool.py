@@ -86,11 +86,11 @@ class DBPoolC():
     async def testDBInit(cls, loop):
 
         pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3307, host='localhost',
-                                  autocommit=False)
+                                  autocommit=True)
         rs = await DBPoolC.select("select * from users", (), 1)
         logging.info(rs)
         affectRow = await DBPoolC.execute("insert into users values(?,?,?,?,?,?,?)", (
-            uuid.uuid4().hex, uuid.uuid4().hex, '222', 1, '444', '555', 1501094015.73242), False)
+            uuid.uuid4().hex, uuid.uuid4().hex, '222', 1, '444', '555', 1501094015.73242))
         logging.info(affectRow)
 
 

@@ -38,8 +38,8 @@ class ModelMetaclassC(type):
         attrs['__update__'] = 'update `%s` set %s where `%s`=?' % (
             tableName, ', '.join(map(lambda f: '`%s`=?' % (mappings.get(f).name or f), fields)), primaryKey)
         attrs['__delete__'] = 'delete from `%s` where `%s`=?' % (tableName, primaryKey)
-        print(name,':',attrs['__select__'])
-        print(name,':',attrs['__insert__'])
-        print(name,':',attrs['__update__'])
-        print(name,':',attrs['__delete__'])
+        print(name, ':', attrs['__select__'])
+        print(name, ':', attrs['__insert__'])
+        print(name, ':', attrs['__update__'])
+        print(name, ':', attrs['__delete__'])
         return type.__new__(cls, name, bases, attrs)

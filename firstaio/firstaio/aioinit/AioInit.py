@@ -29,6 +29,12 @@ class AioInitC():
         logging.info(rs)
         num = await TestModelC.findNumber('count(id)', where="name='444'")
         logging.info(num)
+        user = await TestModelC.find('00150109401573287e93a4a539c4c208819a312d01fa9d6000')
+        logging.info(user)
+        testModel = TestModelC(id=uuid.uuid4().hex, email=uuid.uuid4().hex, passwd='111', admin=True, name='2222',
+                               image='3333')
+        result = await testModel.save()
+        logging.info(result)
 
 
 if __name__ == '__main__':

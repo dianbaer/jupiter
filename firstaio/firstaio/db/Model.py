@@ -1,3 +1,5 @@
+import logging
+
 from firstaio.db.DBPool import DBPoolC
 from firstaio.db.ModelMetaclass import ModelMetaclassC
 
@@ -47,7 +49,36 @@ class ModelC(dict, metaclass=ModelMetaclassC):
         if where:
             sql.append('where')
             sql.append(where)
-        rs = await DBPoolC.select(' '.join(sql), args)
+        rs = await DBPoolC.select(' '.join(sql), args, 1)
         if len(rs) == 0:
             return None
         return rs[0]['_num_']
+
+    @classmethod
+    async def find(cls, primary_key):
+        rs = await DBPoolC.select('%s where `%s`=?' % (cls.__select__, cls.__primary_key__), [primary_key], 1)
+        if len(rs) == 0:
+            return None
+        return cls(**rs[0])
+
+    def getValue(self, key):
+        return getattr(self, key, None)
+
+    def getValueOrDefault(self, key):
+        value = getattr(self, key, None)
+        if value is None:
+            field = self.__mappings__[key]
+            if field.default is not None:
+                value = field.default() if callable(field.default) else field.default
+                logging.debug('using default value for %s: %s' % (key, str(value)))
+                setattr(self, key, value)
+        return value
+
+    async def save(self):
+        args = list(map(self.getValueOrDefault, self.__fields__))
+        args.append(self.getValueOrDefault(self.__primary_key__))
+        rows = await DBPoolC.execute(self.__insert__, args)
+        if rows != 1:
+            logging.error('failed to insert record: affected rows: %s' % rows)
+            return False
+        return True
