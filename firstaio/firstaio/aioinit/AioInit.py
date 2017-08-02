@@ -22,17 +22,18 @@ class AioInitC():
     @classmethod
     async def init(cls, loop, **kwargs):
         logging.info('DBPoolC.init start')
-        dbPool = await DBPoolC.init(loop, **kwargs)
+        dbPool = await DBPoolC.init(loop, **kwargs.get('db'))
         logging.info('DBPoolC.init end')
         app = web.Application(loop=loop, middlewares=[
             auth_factory, response_factory
         ])
         RouteC.init(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
                     'firstaio.http.handler.')
+        srv = await loop.create_server(app.make_handler(), kwargs.get('host'), kwargs.get('port'))
         # rs = await TestModelC.findAll(where="name='444'", limit=(5, 5), orderBy='id')
         # logging.info(rs)
-        # num = await TestModelC.findNumber('count(id)', where="name='444'")
-        # logging.info(num)
+        num = await TestModelC.findNumber('count(id)', where="name='444'")
+        logging.info(num)
         # user = await TestModelC.find('00150109401573287e93a4a539c4c208819a312d01fa9d6000')
         # logging.info(user)
         # testModel = TestModelC(id=uuid.uuid4().hex, email=uuid.uuid4().hex, passwd='111', admin=True, name='2222',
@@ -49,10 +50,15 @@ class AioInitC():
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
+    db = {
+        'host': 'localhost',
+        'port': 3307,
+        'user': 'root',
+        'db': 'awesome',
+        'password': 'root'
+    }
     AioInitC.run(
-        host='localhost',
-        port=3307,
-        user='root',
-        db='awesome',
-        password='root'
+        db=db,
+        host='0.0.0.0',
+        port=8080
     )

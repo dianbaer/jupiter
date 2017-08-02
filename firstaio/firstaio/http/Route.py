@@ -33,7 +33,8 @@ class RouteC():
         logging.info('add route %s %s => %s(%s)' % (
             method, path, fn.__name__, ', '.join(inspect.signature(fn).parameters.keys())))
         requestHandler = RequestHandlerC(app, fn)
-        app.router.add_route(method, path, requestHandler)
+        if app is not None:
+            app.router.add_route(method, path, requestHandler)
 
 
 if __name__ == '__main__':
