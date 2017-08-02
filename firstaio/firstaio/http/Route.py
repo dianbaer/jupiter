@@ -32,8 +32,8 @@ class RouteC():
             raise ValueError('@get or @post not defined in %s.' % str(fn))
         logging.info('add route %s %s => %s(%s)' % (
             method, path, fn.__name__, ', '.join(inspect.signature(fn).parameters.keys())))
-        if app:
-            app.router.add_route(method, path, RequestHandlerC(app, fn))
+        requestHandler = RequestHandlerC(app, fn)
+        app.router.add_route(method, path, requestHandler)
 
 
 if __name__ == '__main__':

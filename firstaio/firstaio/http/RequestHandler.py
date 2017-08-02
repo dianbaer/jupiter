@@ -1,9 +1,9 @@
-class RequestHandlerC(object):
-    def __int__(self, app, fn):
+class RequestHandlerC():
+    def __init__(self, app, fn):
         self._app = app
-        self._func = fn
+        self._fn = fn
 
     async def __call__(self, request):
         kw = None
-        r = await self._func(**kw)
+        r = await self._fn(**kw)
         return r
