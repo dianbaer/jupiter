@@ -33,7 +33,7 @@ class DBPoolC():
         with (await dbPool) as conn:
             logging.info("uid:%s,DBPoolC.select get conn end %s " % (uid, conn))
             logging.info("uid:%s,DBPoolC.select get cursor start " % (uid,))
-            cur = await conn.cursor()
+            cur = await conn.cursor(aiomysql.DictCursor)
             logging.info("uid:%s,DBPoolC.select get cursor end %s " % (uid, cur))
             sql = sql.replace('?', '%s')
             logging.info("uid:%s,DBPoolC.select execute start " % (uid,))
@@ -47,6 +47,7 @@ class DBPoolC():
                 logging.info("uid:%s,DBPoolC.select fetchall start " % (uid,))
                 rs = await cur.fetchall()
                 logging.info("uid:%s,DBPoolC.select fetchall end " % (uid,))
+            await cur.close()
         return rs
 
     @classmethod
@@ -67,6 +68,7 @@ class DBPoolC():
                 logging.info("uid:%s,DBPoolC.execute execute start " % (uid,))
                 await cur.execute(sql, args)
                 affected = cur.rowcount
+                await cur.close()
                 logging.info("uid:%s,DBPoolC.execute execute end affected count %s " % (uid, affected))
                 if not autocommit:
                     logging.info("uid:%s,DBPoolC.execute conn.commit start " % (uid,))
@@ -83,7 +85,7 @@ class DBPoolC():
     @classmethod
     async def testDBInit(cls, loop):
 
-        pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3306, host='localhost',
+        pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3307, host='localhost',
                                   autocommit=False)
         rs = await DBPoolC.select("select * from users", (), 1)
         logging.info(rs)
