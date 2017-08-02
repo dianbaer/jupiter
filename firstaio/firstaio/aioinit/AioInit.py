@@ -8,6 +8,7 @@ from aiohttp import web
 from firstaio.db.DBPool import DBPoolC
 from firstaio.db.TestModel import TestModelC
 from firstaio.http.AuthFactory import auth_factory
+from firstaio.http.LoggerFactory import logger_factory
 from firstaio.http.ResponseFactory import response_factory
 from firstaio.http.Route import RouteC
 
@@ -25,7 +26,7 @@ class AioInitC():
         dbPool = await DBPoolC.init(loop, **kwargs.get('db'))
         logging.info('DBPoolC.init end')
         app = web.Application(loop=loop, middlewares=[
-            auth_factory, response_factory
+            logger_factory, auth_factory, response_factory
         ])
         RouteC.init(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
                     'firstaio.http.handler.')
