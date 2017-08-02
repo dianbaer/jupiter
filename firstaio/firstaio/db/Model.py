@@ -82,3 +82,20 @@ class ModelC(dict, metaclass=ModelMetaclassC):
             logging.error('failed to insert record: affected rows: %s' % rows)
             return False
         return True
+
+    async def update(self):
+        args = list(map(self.getValue, self.__fields__))
+        args.append(self.getValue(self.__primary_key__))
+        rows = await DBPoolC.execute(self.__update__, args)
+        if rows != 1:
+            logging.error('failed to update by primary key: affected rows: %s' % rows)
+            return False
+        return True
+
+    async def remove(self):
+        args = [self.getValue(self.__primary_key__)]
+        rows = await DBPoolC.execute(self.__delete__, args)
+        if rows != 1:
+            logging.error('failed to remove by primary key: affected rows: %s' % rows)
+            return False
+        return True

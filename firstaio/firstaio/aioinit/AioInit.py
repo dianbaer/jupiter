@@ -35,6 +35,12 @@ class AioInitC():
                                image='3333')
         result = await testModel.save()
         logging.info(result)
+        testModel.email = '23277732'
+        result = await testModel.update()
+        logging.info(result)
+        testModel1 = TestModelC(id=testModel.id)
+        result = await testModel1.remove()
+        logging.info(result)
 
 
 if __name__ == '__main__':
