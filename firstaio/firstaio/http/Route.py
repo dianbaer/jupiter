@@ -1,10 +1,15 @@
+import inspect
 import os
+
+import logging
+
+from firstaio.http.RequestHandler import RequestHandlerC
 
 
 class RouteC():
     @classmethod
-    def init(cls, app, foldpath, packet_path):
-        handlerList = [x for x in os.listdir(foldpath) if
+    def init(cls, app, fold_path, packet_path):
+        handlerList = [x for x in os.listdir(fold_path) if
                        os.path.splitext(x)[0] != '__init__' and os.path.splitext(x)[1] == '.py']
         for handler in handlerList:
             n = handler.rfind('.')
@@ -17,9 +22,21 @@ class RouteC():
                     method = getattr(fn, '__method__', None)
                     path = getattr(fn, '__route__', None)
                     if method and path:
-                        print(fn)
+                        RouteC.addApp(app, fn)
+
+    @classmethod
+    def addApp(cls, app, fn):
+        method = getattr(fn, '__method__', None)
+        path = getattr(fn, '__route__', None)
+        if path is None or method is None:
+            raise ValueError('@get or @post not defined in %s.' % str(fn))
+        logging.info('add route %s %s => %s(%s)' % (
+            method, path, fn.__name__, ', '.join(inspect.signature(fn).parameters.keys())))
+        if app:
+            app.router.add_route(method, path, RequestHandlerC(app, fn))
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
     RouteC.init(None, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
                 'firstaio.http.handler.')
