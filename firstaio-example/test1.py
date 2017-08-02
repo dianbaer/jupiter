@@ -12,9 +12,7 @@ logging.info(firstAioConfig.debug)
 logging.info(firstAioConfig.db.host)
 logging.info(firstAioConfig.db.host)
 AioInitC.run(
-    host=firstAioConfig.db.host,
-    port=firstAioConfig.db.port,
-    user=firstAioConfig.db.user,
-    db=firstAioConfig.db.db,
-    password=firstAioConfig.db.password
+    db=firstAioConfig.db,
+    host=firstAioConfig.http.host,
+    port=firstAioConfig.http.port
 )
