@@ -30,6 +30,7 @@ class AioInitC():
         ])
         RouteC.init(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
                     'firstaio.http.handler.')
+        RouteC.initStatic(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\static')
         srv = await loop.create_server(app.make_handler(), kwargs.get('host'), kwargs.get('port'))
         logging.info(srv)
         # rs = await TestModelC.findAll(where="name='444'", limit=(5, 5), orderBy='id')
