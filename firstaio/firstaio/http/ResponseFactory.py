@@ -1,6 +1,7 @@
 import logging
 
 from aiohttp import web
+import json
 
 
 async def response_factory(app, handler):
@@ -14,6 +15,17 @@ async def response_factory(app, handler):
             resp = web.Response(body=r.encode('utf-8'))
             resp.content_type = 'text/html;charset=utf-8'
             return resp
+        if isinstance(r, dict):
+            template = r.get('__template__')
+            if template is not None:
+                resp = web.Response(body=app['__templating__'].get_template(template).render(**r).encode('utf-8'))
+                resp.content_type = 'text/html;charset=utf-8'
+                return resp
+            else:
+                resp = web.Response(
+                    body=json.dumps(r, ensure_ascii=False).encode('utf-8'))
+                resp.content_type = 'application/json;charset=utf-8'
+                return resp
         return r
 
     return response

@@ -1,3 +1,4 @@
+from firstaio.db.TestModel import TestModelC
 from firstaio.http.HttpDecorator import get, post
 
 
@@ -11,6 +12,9 @@ async def redirect(*args, **kwargs):
     return 'redirect:http://www.baidu.com'
 
 
-@post('/users')
+@get('/users')
 async def getUsers(*args, **kwargs):
-    pass
+    r = await TestModelC.findAll()
+    return {
+        'users': r
+    }
