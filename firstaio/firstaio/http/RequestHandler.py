@@ -4,6 +4,7 @@ class RequestHandlerC():
         self._fn = fn
 
     async def __call__(self, request):
-        kw = None
+        kw = dict()
+        kw['request'] = request
         r = await self._fn(**kw)
         return r

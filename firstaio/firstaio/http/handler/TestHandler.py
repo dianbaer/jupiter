@@ -2,10 +2,10 @@ from firstaio.http.HttpDecorator import get, post
 
 
 @get('/')
-async def index(**kwargs):
+async def index(*args, **kwargs):
     pass
 
 
 @post('/users')
-def getUsers(*args, **kwargs):
+async def getUsers(*args, **kwargs):
     pass
