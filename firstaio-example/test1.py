@@ -1,8 +1,8 @@
 import logging
 
+from ConfigOverride import firstAioConfigOverride
 from firstaio.aioinit.AioInit import AioInitC
 from firstaio.config.ConfigDefault import firstAioConfigDefault
-from firstaio.config.ConfigOverride import firstAioConfigOverride
 from firstaio.config.ConfigUtil import ConfigUtilC
 
 logging.basicConfig(level=logging.INFO)
