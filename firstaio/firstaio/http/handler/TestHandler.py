@@ -53,3 +53,113 @@ async def getTemplates(*args, **kwargs):
         ]
 
     }
+
+
+@get('/1')
+async def index1(*, page='1'):
+    pass
+
+
+@get('/blog/{id}')
+async def get_blog(id):
+    pass
+
+
+@get('/register')
+async def register():
+    pass
+
+
+@get('/signin')
+async def signin():
+    pass
+
+
+@post('/api/authenticate')
+async def authenticate(*, email, passwd):
+    pass
+
+
+@get('/signout')
+async def signout(request):
+    pass
+
+
+@get('/manage/')
+async def manage():
+    pass
+
+
+@get('/manage/comments')
+async def manage_comments(*, page='1'):
+    pass
+
+
+@get('/manage/blogs')
+async def manage_blogs(*, page='1'):
+    pass
+
+
+@get('/manage/blogs/create')
+async def manage_create_blog():
+    pass
+
+
+@get('/manage/blogs/edit')
+async def manage_edit_blog(*, id):
+    pass
+
+
+@get('/manage/users')
+async def manage_users(*, page='1'):
+    pass
+
+
+@get('/api/comments')
+async def api_comments(*, page='1'):
+    pass
+
+
+@post('/api/blogs/{id}/comments')
+async def api_create_comment(id, request, *, content):
+    pass
+
+
+@post('/api/comments/{id}/delete')
+async def api_delete_comments(id, request):
+    pass
+
+
+@get('/api/users')
+async def api_get_users(*, page='1'):
+    pass
+
+
+@post('/api/users')
+async def api_register_user(*, email, name, passwd):
+    pass
+
+
+@get('/api/blogs')
+async def api_blogs(*, page='1'):
+    pass
+
+
+@get('/api/blogs/{id}')
+async def api_get_blog(*, id):
+    pass
+
+
+@post('/api/blogs')
+async def api_create_blog(request, *, name, summary, content):
+    pass
+
+
+@post('/api/blogs/{id}')
+async def api_update_blog(id, request, *, name, summary, content):
+    pass
+
+
+@post('/api/blogs/{id}/delete')
+async def api_delete_blog(request, *, id):
+    pass
