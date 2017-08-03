@@ -9,7 +9,7 @@ class RequestHandlerC():
     async def __call__(self, request):
         kw = dict()
         kw['request'] = request
-        logging.info('%s RequestHandlerC call start next handler %s ' % (request['first_aio_uuid'], self._fn))
+        logging.info('%s RequestHandlerC call start next handler %s ' % (request.__uuid__, self._fn))
         r = await self._fn(**kw)
-        logging.info('%s RequestHandlerC call end ' % (request['first_aio_uuid']))
+        logging.info('%s RequestHandlerC call end ' % (request.__uuid__))
         return r

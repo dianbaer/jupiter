@@ -11,6 +11,7 @@ from firstaio.http.AuthFactory import auth_factory
 from firstaio.http.LoggerFactory import logger_factory
 from firstaio.http.ResponseFactory import response_factory
 from firstaio.http.Route import RouteC
+from firstaio.http.Jinja2Setting import Jinja2SettingC
 
 
 class AioInitC():
@@ -31,6 +32,7 @@ class AioInitC():
         RouteC.init(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
                     'firstaio.http.handler.')
         RouteC.initStatic(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\static')
+        Jinja2SettingC.init(app)
         srv = await loop.create_server(app.make_handler(), kwargs.get('host'), kwargs.get('port'))
         logging.info(srv)
         # rs = await TestModelC.findAll(where="name='444'", limit=(5, 5), orderBy='id')

@@ -6,9 +6,9 @@ import json
 
 async def response_factory(app, handler):
     async def response(request):
-        logging.info('%s response_factory response start next handler %s ' % (request['first_aio_uuid'], handler))
+        logging.info('%s response_factory response start next handler %s ' % (request.__uuid__, handler))
         r = await handler(request)
-        logging.info('%s response_factory response end ' % (request['first_aio_uuid']))
+        logging.info('%s response_factory response end ' % (request.__uuid__))
         if isinstance(r, str):
             if r.startswith('redirect:'):
                 return web.HTTPFound(r[9:])
