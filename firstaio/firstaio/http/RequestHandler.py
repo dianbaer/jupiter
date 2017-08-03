@@ -9,6 +9,7 @@ class RequestHandlerC():
         self._has_request_arg = RequestHandlerC.has_request_arg(fn)
         self._has_var_kw_arg = RequestHandlerC.has_var_kw_arg(fn)
         self._has_named_kw_args = RequestHandlerC.has_named_kw_args(fn)
+        self._has_positional_kw_args = RequestHandlerC.has_positional_kw_args(fn)
 
     async def __call__(self, request):
         kw = dict()
@@ -20,17 +21,43 @@ class RequestHandlerC():
 
     @classmethod
     def has_request_arg(cls, fn):
-        pass
+        sig = inspect.signature(fn)
+        params = sig.parameters
+        found = False
+        for name, param in params.items():
+            if name == 'request':
+                found = True
+                logging.info('has_request_arg:%s(%s)' % (fn.__name__, ', '.join(params.keys())))
+                continue
+            if found and (
+                                param.kind != inspect.Parameter.VAR_POSITIONAL and param.kind != inspect.Parameter.KEYWORD_ONLY and param.kind != inspect.Parameter.VAR_KEYWORD):
+                raise ValueError(
+                    'request parameter must be the last named parameter in function: %s%s' % (fn.__name__, str(sig)))
+        return found
 
     @classmethod
     def has_var_kw_arg(cls, fn):
-        pass
+        sig = inspect.signature(fn)
+        params = sig.parameters
+        for name, param in params.items():
+            if param.kind == inspect.Parameter.VAR_KEYWORD:
+                logging.info('has_var_kw_arg:%s(%s)' % (fn.__name__, ', '.join(params.keys())))
+                return True
 
     @classmethod
     def has_named_kw_args(cls, fn):
-        params = inspect.signature(fn).parameters
+        sig = inspect.signature(fn)
+        params = sig.parameters
         for name, param in params.items():
             if param.kind == inspect.Parameter.KEYWORD_ONLY:
-                logging.info('has_named_kw_args:%s(%s)' % (
-                    fn.__name__, ', '.join(params.keys())))
+                logging.info('has_named_kw_args:%s(%s)' % (fn.__name__, ', '.join(params.keys())))
+                return True
+
+    @classmethod
+    def has_positional_kw_args(cls, fn):
+        sig = inspect.signature(fn)
+        params = sig.parameters
+        for name, param in params.items():
+            if param.kind == inspect.Parameter.VAR_POSITIONAL:
+                logging.info('has_positional_kw_args:%s(%s)' % (fn.__name__, ', '.join(params.keys())))
                 return True
