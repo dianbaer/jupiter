@@ -1,5 +1,7 @@
 import uuid
 
+import time
+
 from firstaio.db.TestModel import TestModelC
 from firstaio.http.HttpDecorator import get, post
 
@@ -41,6 +43,12 @@ async def getTemplates(*args, **kwargs):
                 'name': 'firstaio作品展示',
                 'summary': 200,
                 'created_at': 1501006589.27344
+            },
+            {
+                'id': uuid.uuid4().hex,
+                'name': 'firstaio作品展示',
+                'summary': 200,
+                'created_at': time.time()
             }
         ]
 

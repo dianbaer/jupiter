@@ -8,6 +8,7 @@ from aiohttp import web
 from firstaio.db.DBPool import DBPoolC
 from firstaio.db.TestModel import TestModelC
 from firstaio.http.AuthFactory import auth_factory
+from firstaio.http.Jinja2Filter import datetime_filter
 from firstaio.http.LoggerFactory import logger_factory
 from firstaio.http.ResponseFactory import response_factory
 from firstaio.http.Route import RouteC
@@ -32,7 +33,7 @@ class AioInitC():
         RouteC.init(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
                     'firstaio.http.handler.')
         RouteC.initStatic(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\static')
-        Jinja2SettingC.init(app)
+        Jinja2SettingC.init(app, filters=dict(datetime=datetime_filter))
         srv = await loop.create_server(app.make_handler(), kwargs.get('host'), kwargs.get('port'))
         logging.info(srv)
         # rs = await TestModelC.findAll(where="name='444'", limit=(5, 5), orderBy='id')

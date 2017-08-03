@@ -3,6 +3,8 @@ import os
 
 from jinja2 import Environment, FileSystemLoader
 
+from firstaio.http.Jinja2Filter import datetime_filter
+
 
 class Jinja2SettingC():
     @classmethod
@@ -32,5 +34,5 @@ class Jinja2SettingC():
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     Jinja2SettingC.init(None,
-                        path='C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\templates'
-                        )
+                        path='C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\templates',
+                        filters=dict(datetime=datetime_filter))
