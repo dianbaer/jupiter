@@ -6,9 +6,13 @@ class RequestHandlerC():
     def __init__(self, app, fn):
         self._app = app
         self._fn = fn
+        # 是否有request
         self._has_request_arg = RequestHandlerC.has_request_arg(fn)
+        # 是否有**kw
         self._has_var_kw_arg = RequestHandlerC.has_var_kw_arg(fn)
+        # 是否有 *,xxx
         self._has_named_kw_args = RequestHandlerC.has_named_kw_args(fn)
+        # 是否有*args
         self._has_positional_kw_args = RequestHandlerC.has_positional_kw_args(fn)
 
     async def __call__(self, request):
