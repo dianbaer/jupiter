@@ -18,3 +18,8 @@ async def getUsers(*args, **kwargs):
     return {
         'users': r
     }
+@get('/templates')
+async def getTemplates(*args, **kwargs):
+    return {
+        '__template__': 'blogs1.html',
+    }

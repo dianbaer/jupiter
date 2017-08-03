@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block meta %}<!-- block meta -->{% endblock %}
+    <title>{% block title %}<!-- block title -->{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/uikit.min.css">
+    <link rel="stylesheet" href="/static/css/uikit.gradient.min.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/sha1.min.js"></script>
+    <script src="/static/js/uikit.min.js"></script>
+    <script src="/static/js/sticky.min.js"></script>
+    <script src="/static/js/vue.min.js"></script>
+    {% block beforehead %}<!-- block beforehead -->{% endblock %}
+</head>
+<body>
+<nav class="uk-navbar uk-navbar-attached uk-margin-bottom">
+    <div class="uk-container uk-container-center">
+        <a href="/" class="uk-navbar-brand">firstaio</a>
+        <ul class="uk-navbar-nav">
+            <li><a href="/"><i class="uk-icon-home"></i>日志</a></li>
+            <li><a target="_blank" href="/"><i class="uk-icon-book"></i>教程</a></li>
+            <li><a target="_blank" href="/"><i class="uk-icon-code"></i>源码</a></li>
+        </ul>
+        <div class="uk-navbar-flip">
+            <ul class="uk-navbar-nav">
+                {% if __user__ %}
+                <li class="uk-parent" data-uk-dropdown>
+                    <a href="#"><i class="uk-icon-user"></i>{{ __user__.name }}</a>
+                    <div class="uk-dropdown uk-dropdown-navbar">
+                        <ul class="uk-nav uk-nav-navbar">
+                            <li><a href="/signout"><i class="uk-icon-sign-out"></i>登出</a></li>
+                        </ul>
+                    </div>
+                </li>
+                {% else %}
+                <li><a href="/signin"><i class="uk-icon-sign-in"></i>登陆</a></li>
+                <li><a href="/register"><i class="uk-icon-edit"></i>注册</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        {% block content %}<!-- block content -->{% endblock %}
+    </div>
+</div>
+<div class="uk-margin-large-top" style="background-color:#eee; border-top:1px solid #ccc;">
+    <div class="uk-container uk-container-center uk-text-center">
+        <div class="uk-panel uk-margin-top uk-margin-bottom">
+            <p>
+                <a target="_blank" href="#" class="uk-icon-button uk-icon-weibo"></a>
+                <a target="_blank" href="#" class="uk-icon-button uk-icon-github"></a>
+                <a target="_blank" href="#" class="uk-icon-button uk-icon-linkedin-square"></a>
+                <a target="_blank" href="#" class="uk-icon-button uk-icon-twitter"></a>
+            </p>
+            <p>Powered by <a href="#">firstaio</a>. Copyright &copy; 2017. [<a href="#" target="_blank">Manage</a>]</p>
+            <p><a href="#" target="_blank">firstaio</a>. All rights reserved.</p>
+            <a target="_blank" href="#"><i class="uk-icon-html5" style="font-size:64px; color: #444;"></i></a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
