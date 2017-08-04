@@ -27,14 +27,11 @@ class AioInitC():
         logging.info('DBPoolC.init start')
         dbPool = await DBPoolC.init(loop, **kwargs.get('db'))
         logging.info('DBPoolC.init end')
-        app = web.Application(loop=loop, middlewares=[
-            logger_factory, auth_factory, response_factory
-        ])
-        RouteC.init(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
-                    'firstaio.http.handler.')
-        RouteC.initStatic(app, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\static')
-        Jinja2SettingC.init(app, filters=dict(datetime=datetime_filter))
-        srv = await loop.create_server(app.make_handler(), kwargs.get('host'), kwargs.get('port'))
+        app = web.Application(loop=loop, middlewares=[logger_factory, auth_factory, response_factory])
+        RouteC.init(app, kwargs.get('http')['handler'], kwargs.get('http')['handler_pack'])
+        RouteC.initStatic(app, kwargs.get('http')['static'])
+        Jinja2SettingC.init(app, filters=dict(datetime=datetime_filter), path=kwargs.get('http')['templates'])
+        srv = await loop.create_server(app.make_handler(), kwargs.get('http')['host'], kwargs.get('http')['port'])
         logging.info(srv)
         # rs = await TestModelC.findAll(where="name='444'", limit=(5, 5), orderBy='id')
         # logging.info(rs)
@@ -60,11 +57,18 @@ if __name__ == '__main__':
         'host': 'localhost',
         'port': 3307,
         'user': 'root',
-        'db': 'awesome',
-        'password': 'root'
+        'password': 'root',
+        'db': 'awesome'
+    }
+    http = {
+        'host': '0.0.0.0',
+        'port': 8080,
+        'templates': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\templates',
+        'static': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\static',
+        'handler': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
+        'handler_pack': 'firstaio.http.handler.'
     }
     AioInitC.run(
         db=db,
-        host='0.0.0.0',
-        port=8080
+        http=http
     )

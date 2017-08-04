@@ -1,17 +1,17 @@
 firstAioConfigDefault = {
-    'debug': True,
     'db': {
         'host': 'localhost',
-        'port': 3306,
+        'port': 3307,
         'user': 'root',
         'password': 'root',
         'db': 'awesome'
     },
-    'session': {
-        'secret': 'firstaio'
-    },
     'http': {
         'host': '0.0.0.0',
-        'port': 8080
+        'port': 8080,
+        'templates': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\templates',
+        'static': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\static',
+        'handler': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
+        'handler_pack': 'firstaio.http.handler.'
     }
 }
