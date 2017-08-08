@@ -4,8 +4,21 @@
 {% endblock %}
 {% block title %}日志1{% endblock %}
 {% block beforehead %}
-<script>
+<script type="text/javascript">
+	//初始化内部类
+    $T.version.init();
+    $T.version.loadScript("/static/js/app/NotificationExt.js");
+    $T.version.loadScript("/static/js/app/Url.js");
+    $T.version.loadScript("/static/js/app/data/http/DemoProxy.js");
+    $T.version.loadScript("/static/js/app/BlogMediator.js");
     window.onload = function () {
+        //初始化过滤器
+        var testFilter = new TestFilter();
+        $T.httpResultFilter.addFilter(testFilter);
+        //初始化控制器
+        $T.blogMediator.init();
+        $T.register.register($T.blogMediator);
+
     }
 </script>
 {% endblock %}

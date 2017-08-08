@@ -66,8 +66,10 @@ async def get_blog(id):
 
 
 @get('/register')
-async def register():
-    pass
+async def register(*args, **kwargs):
+    return {
+        '__template__': 'register1.html'
+    }
 
 
 @get('/signin')
