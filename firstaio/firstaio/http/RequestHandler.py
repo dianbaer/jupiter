@@ -1,6 +1,8 @@
 import inspect
 import logging
 
+from aiohttp import web
+
 
 class RequestHandlerC():
     def __init__(self, app, fn):
@@ -14,8 +16,28 @@ class RequestHandlerC():
         self._has_named_kw_args = RequestHandlerC.has_named_kw_args(fn)
         # 是否有*args
         self._has_positional_kw_args = RequestHandlerC.has_positional_kw_args(fn)
+        # *,xxx后面的参数
+        self._named_kw_args = RequestHandlerC.get_named_kw_args(fn)
+        # *,xxx后面的参数并且没有默认值
+        self._required_kw_args = RequestHandlerC.get_required_kw_args(fn)
 
     async def __call__(self, request):
+        kw = None
+        if self._has_named_kw_args:
+            if request.method == 'POST':
+                if not request.content_type:
+                    return web.HTTPBadRequest('Missing Content-Type.')
+                ct = request.content_type.lower()
+                if ct.startswith('application/json'):
+                    params = await request.json()
+                    if not isinstance(params, dict):
+                        return web.HTTPBadRequest('JSON body must be object.')
+                    kw = params
+                elif ct.startswith('application/x-www-form-urlencoded') or ct.startswith('multipart/form-data'):
+                    params = await request.post()
+                    kw = dict(**params)
+                else:
+                    return web.HTTPBadRequest('Unsupported Content-Type: %s' % request.content_type)
         kw = dict()
         kw['request'] = request
         logging.info('%s RequestHandlerC call start next handler %s ' % (request.__uuid__, self._fn))
@@ -65,3 +87,27 @@ class RequestHandlerC():
             if param.kind == inspect.Parameter.VAR_POSITIONAL:
                 logging.info('has_positional_kw_args:%s(%s)' % (fn.__name__, ', '.join(params.keys())))
                 return True
+
+    @classmethod
+    def get_named_kw_args(cls, fn):
+        args = []
+        sig = inspect.signature(fn)
+        params = sig.parameters
+        for name, param in params.items():
+            if param.kind == inspect.Parameter.KEYWORD_ONLY:
+                args.append(name)
+        if len(args) > 0:
+            logging.info('get_named_kw_args:%s(%s),args%s' % (fn.__name__, ', '.join(params.keys()), str(args)))
+        return tuple(args)
+
+    @classmethod
+    def get_required_kw_args(cls, fn):
+        args = []
+        sig = inspect.signature(fn)
+        params = sig.parameters
+        for name, param in params.items():
+            if param.kind == inspect.Parameter.KEYWORD_ONLY and param.default == inspect.Parameter.empty:
+                args.append(name)
+        if len(args) > 0:
+            logging.info('get_required_kw_args:%s(%s),args%s' % (fn.__name__, ', '.join(params.keys()), str(args)))
+        return tuple(args)

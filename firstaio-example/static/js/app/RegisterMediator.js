@@ -21,7 +21,8 @@ function RegisterMediator() {
         var userName = $("#userName").val();
         var userEmail = $("#userEmail").val();
         var userPassword = $("#userPassword").val();
-        $T.demoProxy.demoTest(userName, userEmail, userPassword);
+        var userImg = $("#userImg")[0].files;
+        $T.demoProxy.demoTest(userName, userEmail, userPassword, userImg);
     }
 }
 $T.registerMediator = new RegisterMediator();

@@ -1,5 +1,5 @@
 function DemoProxy() {
-    this.demoTest = function (userName, userPassword, userEmail) {
+    this.demoTest = function (userName, userPassword, userEmail, userImg) {
         var data = {
             "userName": userName,
             "userPassword": userPassword,
@@ -12,6 +12,9 @@ function DemoProxy() {
         sendParam.object = this;
         sendParam.data = data;
         sendParam.url = '/api/users';
+        if (userImg != null && userImg.length != 0) {
+            sendParam.fileArray = userImg;
+        }
         $T.httpUtilNormal.send(sendParam);
     }
     this.demoTestSuccess = function (result, sendParam) {
