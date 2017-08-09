@@ -7,17 +7,17 @@ from firstaio.http.HttpDecorator import get, post
 
 
 @get('/')
-async def index(*args, **kwargs):
+async def index():
     return '<h1>hello world</h1>'
 
 
 @get('/redirect')
-async def redirect(*args, **kwargs):
+async def redirect():
     return 'redirect:http://www.baidu.com'
 
 
 @get('/users')
-async def getUsers(*args, **kwargs):
+async def getUsers():
     r = await TestModelC.findAll()
     return {
         'users': r
@@ -25,7 +25,7 @@ async def getUsers(*args, **kwargs):
 
 
 @get('/templates')
-async def getTemplates(*args, **kwargs):
+async def getTemplates():
     return {
         '__template__': 'blogs1.html',
         '__user__': {
@@ -66,7 +66,7 @@ async def get_blog(id):
 
 
 @get('/register')
-async def register(*args, **kwargs):
+async def register():
     return {
         '__template__': 'register1.html'
     }
