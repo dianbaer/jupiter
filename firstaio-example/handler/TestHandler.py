@@ -138,7 +138,7 @@ async def api_get_users(*, page='1'):
 
 
 @post('/api/users')
-async def api_register_user(*, email, name, passwd):
+async def api_register_user(request, *, userEmail, userName, userPassword):
     pass
 
 

@@ -1,7 +1,10 @@
 import inspect
 import logging
+from urllib import parse
+from urllib.parse import unquote
 
 from aiohttp import web
+import json
 
 
 class RequestHandlerC():
@@ -23,7 +26,7 @@ class RequestHandlerC():
 
     async def __call__(self, request):
         kw = None
-        if self._has_named_kw_args:
+        if self._has_var_kw_arg or self._has_named_kw_args:
             if request.method == 'POST':
                 if not request.content_type:
                     return web.HTTPBadRequest('Missing Content-Type.')
@@ -33,13 +36,39 @@ class RequestHandlerC():
                     if not isinstance(params, dict):
                         return web.HTTPBadRequest('JSON body must be object.')
                     kw = params
-                elif ct.startswith('application/x-www-form-urlencoded') or ct.startswith('multipart/form-data'):
+                elif ct.startswith('multipart/form-data'):
                     params = await request.post()
-                    kw = dict(**params)
+                    kwAndFile = dict(**params)
+                    if kwAndFile.get('packet') is None:
+                        return web.HTTPBadRequest('packet is None')
+                    packet = unquote(kwAndFile.get('packet'))
+                    kw = json.loads(packet)
+                    kwAndFile.pop('packet')
+                    request.__file__ = kwAndFile
                 else:
                     return web.HTTPBadRequest('Unsupported Content-Type: %s' % request.content_type)
-        kw = dict()
-        kw['request'] = request
+            if request.method == 'GET':
+                qs = request.query_string
+                if qs:
+                    kw = dict()
+                    for k, v in parse.parse_qs(qs, True).items():
+                        kw[k] = v[0]
+        if kw is None:
+            kw = dict(**request.match_info)
+        else:
+            if not self._has_var_kw_arg and self._has_named_kw_args:
+                copy = dict()
+                for name in self._named_kw_args:
+                    if name in kw:
+                        copy[name] = kw[name]
+                kw = copy
+        if self._has_request_arg:
+            kw['request'] = request
+        if self._required_kw_args:
+            for name in self._required_kw_args:
+                if not name in kw:
+                    return web.HTTPBadRequest('Missing argument: %s' % name)
+        logging.info('call with args: %s' % str(kw))
         logging.info('%s RequestHandlerC call start next handler %s ' % (request.__uuid__, self._fn))
         r = await self._fn(**kw)
         logging.info('%s RequestHandlerC call end ' % (request.__uuid__))

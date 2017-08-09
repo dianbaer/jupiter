@@ -1,5 +1,5 @@
 function DemoProxy() {
-    this.demoTest = function (userName, userPassword, userEmail, userImg) {
+    this.demoTest = function (userName, userEmail, userPassword, userImg) {
         var data = {
             "userName": userName,
             "userPassword": userPassword,
