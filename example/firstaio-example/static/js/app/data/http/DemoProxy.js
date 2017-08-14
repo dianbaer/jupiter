@@ -11,7 +11,7 @@ function DemoProxy() {
         sendParam.failHandle = this.demoTestFail;
         sendParam.object = this;
         sendParam.data = data;
-        sendParam.url = '/api/users';
+        sendParam.url = $T.url.createExample;
         if (userImg != null && userImg.length != 0) {
             sendParam.fileArray = userImg;
         }
