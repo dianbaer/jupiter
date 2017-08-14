@@ -65,8 +65,6 @@ async def register():
 
 
 @post('/api/examples')
-async def api_register_user(request, *, userEmail, userName, userPassword):
-    logging.info('userEmail:%s,userName:%s,userPassword:%s' % (userEmail, userName, userPassword))
-    if request.__file__:
-        logging.info(str(request.__file__))
+async def api_register_user(request, *, userEmail, userName, userPassword, file=None):
+    logging.info('userEmail:%s,userName:%s,userPassword:%s,file:%s' % (userEmail, userName, userPassword, file))
     return {'result': 'success'}
