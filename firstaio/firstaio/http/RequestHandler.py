@@ -44,7 +44,7 @@ class RequestHandlerC():
                     packet = unquote(kwAndFile.get('packet'))
                     kw = json.loads(packet)
                     kwAndFile.pop('packet')
-                    request.__file__ = kwAndFile
+                    kw['file'] = kwAndFile
                 else:
                     return web.HTTPBadRequest('Unsupported Content-Type: %s' % request.content_type)
             if request.method == 'GET':
