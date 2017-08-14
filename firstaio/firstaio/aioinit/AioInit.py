@@ -1,12 +1,10 @@
 import asyncio
 
 import logging
-import uuid
 
 from aiohttp import web
 
 from firstaio.db.DBPool import DBPoolC
-from firstaio.db.TestModel import TestModelC
 from firstaio.http.AuthFactory import auth_factory
 from firstaio.http.Jinja2Filter import datetime_filter
 from firstaio.http.LoggerFactory import logger_factory

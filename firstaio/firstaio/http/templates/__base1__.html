@@ -26,17 +26,17 @@
         <div class="uk-navbar-flip">
             <ul class="uk-navbar-nav">
                 {% if __user__ %}
-                <li class="uk-parent" data-uk-dropdown>
-                    <a href="#"><i class="uk-icon-user"></i>{{ __user__.name }}</a>
-                    <div class="uk-dropdown uk-dropdown-navbar">
-                        <ul class="uk-nav uk-nav-navbar">
-                            <li><a href="#"><i class="uk-icon-sign-out"></i>&nbsp登出</a></li>
-                        </ul>
-                    </div>
-                </li>
+                    <li class="uk-parent" data-uk-dropdown>
+                        <a href="#"><i class="uk-icon-user"></i>{{ __user__.name }}</a>
+                        <div class="uk-dropdown uk-dropdown-navbar">
+                            <ul class="uk-nav uk-nav-navbar">
+                                <li><a href="#"><i class="uk-icon-sign-out"></i>&nbsp登出</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 {% else %}
-                <li><a href="#"><i class="uk-icon-sign-in"></i>&nbsp登陆</a></li>
-                <li><a href="#"><i class="uk-icon-edit"></i>&nbsp注册</a></li>
+                    <li><a href="#"><i class="uk-icon-sign-in"></i>&nbsp登陆</a></li>
+                    <li><a href="#"><i class="uk-icon-edit"></i>&nbsp注册</a></li>
                 {% endif %}
             </ul>
         </div>
