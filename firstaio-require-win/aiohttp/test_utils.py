@@ -148,6 +148,7 @@ class TestServer(BaseTestServer):
 
     @asyncio.coroutine
     def _make_factory(self, **kwargs):
+        self.app._set_loop(self._loop)
         yield from self.app.startup()
         self.handler = self.app.make_handler(loop=self._loop, **kwargs)
         return self.handler
@@ -401,7 +402,7 @@ class AioHTTPTestCase(unittest.TestCase):
     @asyncio.coroutine
     def _get_client(self, app):
         """Return a TestClient instance."""
-        return TestClient(self.app, loop=self.loop)
+        return TestClient(app, loop=self.loop)
 
 
 def unittest_run_loop(func, *args, **kwargs):
