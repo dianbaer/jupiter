@@ -5,6 +5,8 @@ import logging
 
 import asyncio
 
+import time
+
 
 class DBPoolC():
     @classmethod
@@ -85,12 +87,13 @@ class DBPoolC():
     @classmethod
     async def testDBInit(cls, loop):
 
-        pool = await DBPoolC.init(loop, user='root', password='root', db='awesome', port=3307, host='localhost',
+        pool = await DBPoolC.init(loop, user='root', password='root', db='firstaioexample', port=3307, host='localhost',
                                   autocommit=True)
-        rs = await DBPoolC.select("select * from users", (), 1)
+        rs = await DBPoolC.select("select * from example", (), 1)
         logging.info(rs)
-        affectRow = await DBPoolC.execute("insert into users values(?,?,?,?,?,?,?)", (
-            uuid.uuid4().hex, uuid.uuid4().hex, '222', 1, '444', '555', 1501094015.73242))
+        affectRow = await DBPoolC.execute("insert into example values(?,?,?,?,?,?,?)",
+                                          (uuid.uuid4().hex, 'name', time.time(), 2, 1111111111, 1111111111111,
+                                           'textxxxxxx'))
         logging.info(affectRow)
 
 
