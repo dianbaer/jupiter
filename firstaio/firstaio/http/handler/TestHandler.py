@@ -55,6 +55,13 @@ async def getTemplates():
     }
 
 
+@get('/register')
+async def register():
+    return {
+        '__template__': 'register1.html'
+    }
+
+
 @post('/api/examples')
 async def api_register_user(request, *, userEmail, userName, userPassword):
     pass
