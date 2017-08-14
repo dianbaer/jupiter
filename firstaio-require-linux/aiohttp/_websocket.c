@@ -901,7 +901,7 @@ static const char __pyx_k_uint32_msk[] = "uint32_msk";
 static const char __pyx_k_uint64_msk[] = "uint64_msk";
 static const char __pyx_k_aiohttp__websocket[] = "aiohttp._websocket";
 static const char __pyx_k_websocket_mask_cython[] = "_websocket_mask_cython";
-static const char __pyx_k_tmp_pip_tspipw_e_build_aiohttp[] = "/tmp/pip-tspipw_e-build/aiohttp/_websocket.pyx";
+static const char __pyx_k_tmp_pip_lmfhz_gc_build_aiohttp[] = "/tmp/pip-lmfhz_gc-build/aiohttp/_websocket.pyx";
 static PyObject *__pyx_n_s_aiohttp__websocket;
 static PyObject *__pyx_n_s_data;
 static PyObject *__pyx_n_s_data_len;
@@ -912,7 +912,7 @@ static PyObject *__pyx_n_s_mask;
 static PyObject *__pyx_n_s_mask_buf;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_kp_s_tmp_pip_tspipw_e_build_aiohttp;
+static PyObject *__pyx_kp_s_tmp_pip_lmfhz_gc_build_aiohttp;
 static PyObject *__pyx_n_s_uint32_msk;
 static PyObject *__pyx_n_s_uint64_msk;
 static PyObject *__pyx_n_s_websocket_mask_cython;
@@ -1356,7 +1356,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_mask_buf, __pyx_k_mask_buf, sizeof(__pyx_k_mask_buf), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
-  {&__pyx_kp_s_tmp_pip_tspipw_e_build_aiohttp, __pyx_k_tmp_pip_tspipw_e_build_aiohttp, sizeof(__pyx_k_tmp_pip_tspipw_e_build_aiohttp), 0, 0, 1, 0},
+  {&__pyx_kp_s_tmp_pip_lmfhz_gc_build_aiohttp, __pyx_k_tmp_pip_lmfhz_gc_build_aiohttp, sizeof(__pyx_k_tmp_pip_lmfhz_gc_build_aiohttp), 0, 0, 1, 0},
   {&__pyx_n_s_uint32_msk, __pyx_k_uint32_msk, sizeof(__pyx_k_uint32_msk), 0, 0, 1, 1},
   {&__pyx_n_s_uint64_msk, __pyx_k_uint64_msk, sizeof(__pyx_k_uint64_msk), 0, 0, 1, 1},
   {&__pyx_n_s_websocket_mask_cython, __pyx_k_websocket_mask_cython, sizeof(__pyx_k_websocket_mask_cython), 0, 0, 1, 1},
@@ -1383,7 +1383,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple_ = PyTuple_Pack(8, __pyx_n_s_mask, __pyx_n_s_data, __pyx_n_s_data_len, __pyx_n_s_i, __pyx_n_s_in_buf, __pyx_n_s_mask_buf, __pyx_n_s_uint32_msk, __pyx_n_s_uint64_msk); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_tmp_pip_tspipw_e_build_aiohttp, __pyx_n_s_websocket_mask_cython, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(2, 0, 8, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_tmp_pip_lmfhz_gc_build_aiohttp, __pyx_n_s_websocket_mask_cython, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;

@@ -1345,7 +1345,7 @@ static const char __pyx_k_FlowControlStreamReader[] = "FlowControlStreamReader";
 static const char __pyx_k_Header_name_is_too_long[] = "Header name is too long";
 static const char __pyx_k_Status_line_is_too_long[] = "Status line is too long";
 static const char __pyx_k_Header_value_is_too_long[] = "Header value is too long";
-static const char __pyx_k_tmp_pip_tspipw_e_build_aiohttp[] = "/tmp/pip-tspipw_e-build/aiohttp/_http_parser.pyx";
+static const char __pyx_k_tmp_pip_lmfhz_gc_build_aiohttp[] = "/tmp/pip-lmfhz_gc-build/aiohttp/_http_parser.pyx";
 static const char __pyx_k_Not_enough_data_for_satisfy_cont[] = "Not enough data for satisfy content length header.";
 static const char __pyx_k_Not_enough_data_for_satisfy_tran[] = "Not enough data for satisfy transfer length header.";
 static PyObject *__pyx_n_s_BadHttpMessage;
@@ -1430,7 +1430,7 @@ static PyObject *__pyx_n_s_streams;
 static PyObject *__pyx_n_u_surrogateescape;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_timer;
-static PyObject *__pyx_kp_s_tmp_pip_tspipw_e_build_aiohttp;
+static PyObject *__pyx_kp_s_tmp_pip_lmfhz_gc_build_aiohttp;
 static PyObject *__pyx_n_s_url;
 static PyObject *__pyx_n_s_userinfo;
 static PyObject *__pyx_kp_u_utf_8;
@@ -9453,7 +9453,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_surrogateescape, __pyx_k_surrogateescape, sizeof(__pyx_k_surrogateescape), 0, 1, 0, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_timer, __pyx_k_timer, sizeof(__pyx_k_timer), 0, 0, 1, 1},
-  {&__pyx_kp_s_tmp_pip_tspipw_e_build_aiohttp, __pyx_k_tmp_pip_tspipw_e_build_aiohttp, sizeof(__pyx_k_tmp_pip_tspipw_e_build_aiohttp), 0, 0, 1, 0},
+  {&__pyx_kp_s_tmp_pip_lmfhz_gc_build_aiohttp, __pyx_k_tmp_pip_lmfhz_gc_build_aiohttp, sizeof(__pyx_k_tmp_pip_lmfhz_gc_build_aiohttp), 0, 0, 1, 0},
   {&__pyx_n_s_url, __pyx_k_url, sizeof(__pyx_k_url), 0, 0, 1, 1},
   {&__pyx_n_s_userinfo, __pyx_k_userinfo, sizeof(__pyx_k_userinfo), 0, 0, 1, 1},
   {&__pyx_kp_u_utf_8, __pyx_k_utf_8, sizeof(__pyx_k_utf_8), 0, 1, 0, 0},
@@ -9526,7 +9526,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__8 = PyTuple_Pack(3, __pyx_n_s_url, __pyx_n_s_py_buf, __pyx_n_s_buf_data); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 466, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
-  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_tmp_pip_tspipw_e_build_aiohttp, __pyx_n_s_parse_url_2, 466, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 466, __pyx_L1_error)
+  __pyx_codeobj__9 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__8, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_tmp_pip_lmfhz_gc_build_aiohttp, __pyx_n_s_parse_url_2, 466, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__9)) __PYX_ERR(0, 466, __pyx_L1_error)
 
   /* "aiohttp/_http_parser.pyx":479
  * 
@@ -9538,7 +9538,7 @@ static int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__10 = PyTuple_Pack(14, __pyx_n_s_buf_data, __pyx_n_s_length, __pyx_n_s_parsed, __pyx_n_s_res, __pyx_n_s_schema, __pyx_n_s_host, __pyx_n_s_port, __pyx_n_s_path, __pyx_n_s_query, __pyx_n_s_fragment, __pyx_n_s_userinfo, __pyx_n_s_result, __pyx_n_s_off, __pyx_n_s_ln); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 479, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(2, 0, 14, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_tmp_pip_tspipw_e_build_aiohttp, __pyx_n_s_parse_url, 479, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 479, __pyx_L1_error)
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(2, 0, 14, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_tmp_pip_lmfhz_gc_build_aiohttp, __pyx_n_s_parse_url, 479, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 479, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
