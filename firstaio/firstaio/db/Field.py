@@ -13,23 +13,28 @@ class FieldC():
 
 
 class StringFieldC(FieldC):
-    def __init__(self, name=None, primary_key=False, default=None, ddl='varchat(100)'):
+    def __init__(self, name=None, primary_key=False, default=None, ddl='varchat(255)'):
         super().__init__(name, ddl, primary_key, default)
 
 
-class BooleanFieldC(FieldC):
+class TinyIntFieldC(FieldC):
     def __init__(self, name=None, default=False):
-        super().__init__(name, 'boolean', False, default)
+        super().__init__(name, 'tinyint', False, default)
 
 
-class IntegerFieldC(FieldC):
+class IntFieldC(FieldC):
+    def __init__(self, name=None, primary_key=False, default=0):
+        super().__init__(name, 'int', primary_key, default)
+
+
+class BigIntFieldC(FieldC):
     def __init__(self, name=None, primary_key=False, default=0):
         super().__init__(name, 'bigint', primary_key, default)
 
 
-class FloatFieldC(FieldC):
+class DoubleFieldC(FieldC):
     def __init__(self, name=None, primary_key=False, default=0.0):
-        super().__init__(name, 'real', primary_key, default)
+        super().__init__(name, 'double', primary_key, default)
 
 
 class TextFieldC(FieldC):
@@ -41,11 +46,11 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     str1 = StringFieldC('111', True, 'xxxxxx', 'varchat(255)')
     logging.info(str1)
-    bool1 = BooleanFieldC('222')
+    bool1 = TinyIntFieldC('222')
     logging.info(bool1)
-    int1 = IntegerFieldC('333')
+    int1 = IntFieldC('333')
     logging.info(int1)
-    float1 = FloatFieldC('444')
+    float1 = DoubleFieldC('444')
     logging.info(float1)
     text1 = TextFieldC('555')
     logging.info(text1)
