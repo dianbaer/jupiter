@@ -4,7 +4,8 @@ firstAioConfigDefault = {
         'port': 3307,
         'user': 'root',
         'password': 'root',
-        'db': 'awesome'
+        'db': 'firstaioexample',
+        'is_use': True
     },
     'http': {
         'host': '0.0.0.0',
