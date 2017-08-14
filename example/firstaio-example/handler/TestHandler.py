@@ -1,11 +1,9 @@
+import logging
+import time
 import uuid
 
-import time
-
-import logging
-
-from TestModel import TestModelC
 from firstaio.http.HttpDecorator import get, post
+from model.TestModel import TestModelC
 
 
 @get('/')
