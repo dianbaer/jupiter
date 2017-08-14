@@ -33,22 +33,22 @@ class AioInitC():
         Jinja2SettingC.init(app, filters=dict(datetime=datetime_filter), path=kwargs.get('http')['templates'])
         srv = await loop.create_server(app.make_handler(), kwargs.get('http')['host'], kwargs.get('http')['port'])
         logging.info(srv)
-        # rs = await TestModelC.findAll(where="name='444'", limit=(5, 5), orderBy='id')
-        # logging.info(rs)
-        # num = await TestModelC.findNumber('count(id)', where="name='444'")
-        # logging.info(num)
-        # user = await TestModelC.find('00150109401573287e93a4a539c4c208819a312d01fa9d6000')
-        # logging.info(user)
-        # testModel = TestModelC(id=uuid.uuid4().hex, email=uuid.uuid4().hex, passwd='111', admin=True, name='2222',
-        #                        image='3333')
-        # result = await testModel.save()
-        # logging.info(result)
-        # testModel.email = '23277732'
-        # result = await testModel.update()
-        # logging.info(result)
-        # testModel1 = TestModelC(id=testModel.id)
-        # result = await testModel1.remove()
-        # logging.info(result)
+        rs = await TestModelC.findAll(where="name='name'", limit=(5, 5), orderBy='id')
+        logging.info(rs)
+        num = await TestModelC.findNumber('count(id)', where="name='name'")
+        logging.info(num)
+        user = await TestModelC.find('cd3dc2dab4b940a5b4dde8318a27a9d7')
+        logging.info(user)
+        testModel = TestModelC(id=uuid.uuid4().hex, name='name', status=2, num=123, price=111111111119,
+                               content='xxxxxxx')
+        result = await testModel.save()
+        logging.info(result)
+        testModel.name = '23277732'
+        result = await testModel.update()
+        logging.info(result)
+        testModel1 = TestModelC(id=testModel.id)
+        result = await testModel1.remove()
+        logging.info(result)
 
 
 if __name__ == '__main__':
@@ -58,7 +58,8 @@ if __name__ == '__main__':
         'port': 3307,
         'user': 'root',
         'password': 'root',
-        'db': 'awesome'
+        'db': 'firstaioexample',
+        'is_use': True
     }
     http = {
         'host': '0.0.0.0',

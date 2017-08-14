@@ -18,7 +18,7 @@ class StringFieldC(FieldC):
 
 
 class TinyIntFieldC(FieldC):
-    def __init__(self, name=None, default=False):
+    def __init__(self, name=None, default=0):
         super().__init__(name, 'tinyint', False, default)
 
 
