@@ -1,8 +1,8 @@
 # firstaio
 
-FirstAIO一款非阻塞式的Web框架，使用FirstAIO开发者可以快速的开发高并发的Web项目。
+FirstAIO一款异步IO的Web框架，使用FirstAIO开发者可以快速的开发高并发的Web项目。
 
-FirstAIO包含：配置、非阻塞ORM、注解、日志、模板、非阻塞Http等功能。
+FirstAIO包含：配置、异步IO-ORM、注解、日志、模板、异步IO-Http等功能。
 
 
 FirstAIO依赖：
