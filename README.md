@@ -38,35 +38,37 @@ FirstAIO包含：配置、异步IO-ORM、注解、日志、模板、异步IO-Htt
 
 快速开始(example\firstaio-example)：
 
-	1、ConfigOverride.py：
+	1、将firstaio文件夹考入项目根目录或者Python第三方插件目录site-packages
+	
+	2、ConfigOverride.py：
 
 		配置文件，配置数据库与http相关参数
 
-	2、main.py：
+	3、main.py：
 
 		运行文件
 		
-	3、handler文件夹：
+	4、handler文件夹：
 
 		解析http相关注解的处理函数
 		
-	4、static文件夹：
+	5、static文件夹：
 		
 		http静态内容文件夹
 		
-	5、templates文件夹：
+	6、templates文件夹：
 
 		模板文件夹（基于jinja2）
 		
-	6、model文件夹：
+	7、model文件夹：
 
 		ORM映射类文件夹
 
-	7、执行指令：
+	8、执行指令：
 
 		python main.py
 	
-	8、注册服务：
+	9、注册服务：
 		
 		执行registerervice.sh
 		
