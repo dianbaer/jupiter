@@ -62,7 +62,16 @@ FirstAIO包含：配置、异步IO-ORM、注解、日志、模板、异步IO-Htt
 
 		ORM映射类文件夹
 
-	
-运行，执行指令：
+	7、执行指令：
 
-	python main.py
+		python main.py
+	
+	8、注册服务：
+		
+		执行registerervice.sh
+		
+		包含文件
+		firstaioexample.service
+		registerervice.sh
+		startservice.sh
+	
