@@ -16,7 +16,7 @@ firstAioExampleConfigOverride = {
         'handler_pack': 'handler.'
     },
     'log': {
-        'path': None,
+        'path': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\example\\firstaio-example\\',
         'name': 'py.log'
     }
 }
