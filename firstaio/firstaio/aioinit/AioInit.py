@@ -22,6 +22,15 @@ class AioInitC():
 
     @classmethod
     async def init(cls, loop, **kwargs):
+        logging.basicConfig(level=logging.INFO,
+                            format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                            filename=kwargs.get('log')['name'], filemode='w')
+        console = logging.StreamHandler()
+        console.setLevel(logging.INFO)
+        formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
+        console.setFormatter(formatter)
+        logging.getLogger('').addHandler(console)
+
         if kwargs.get('db')['is_use']:
             logging.info('DBPoolC.init start')
             dbPool = await DBPoolC.init(loop, **kwargs.get('db'))
@@ -53,7 +62,12 @@ if __name__ == '__main__':
         'handler': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
         'handler_pack': 'firstaio.http.handler.'
     }
+    log = {
+        'path': None,
+        'name': 'py.log'
+    }
     AioInitC.run(
         db=db,
-        http=http
+        http=http,
+        log=log
     )

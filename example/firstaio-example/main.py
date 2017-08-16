@@ -10,5 +10,6 @@ logging.basicConfig(level=logging.INFO)
 firstAioConfig = ConfigUtilC.init(firstAioConfigDefault, firstAioExampleConfigOverride)
 AioInitC.run(
     db=firstAioConfig.db,
-    http=firstAioConfig.http
+    http=firstAioConfig.http,
+	log=firstAioConfig.log
 )

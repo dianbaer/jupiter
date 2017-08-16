@@ -14,5 +14,10 @@ firstAioConfigDefault = {
         'static': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\static',
         'handler': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
         'handler_pack': 'firstaio.http.handler.'
+    },
+    'log': {
+        'path': None,
+        'name': 'py.log'
     }
+
 }
