@@ -41,8 +41,10 @@ class AioInitC():
 
         app = web.Application(loop=loop, middlewares=[logger_factory, auth_factory, response_factory])
         RouteC.init(app, kwargs.get('http')['handler'], kwargs.get('http')['handler_pack'])
-        RouteC.initStatic(app, kwargs.get('http')['static'])
-        Jinja2SettingC.init(app, filters=dict(datetime=datetime_filter), path=kwargs.get('http')['templates'])
+        if kwargs.get('http')['static'] is not None:
+            RouteC.initStatic(app, kwargs.get('http')['static'])
+        if kwargs.get('http')['templates'] is not None:
+            Jinja2SettingC.init(app, filters=dict(datetime=datetime_filter), path=kwargs.get('http')['templates'])
         srv = await loop.create_server(app.make_handler(), kwargs.get('http')['host'], kwargs.get('http')['port'])
         logging.info(srv)
 
