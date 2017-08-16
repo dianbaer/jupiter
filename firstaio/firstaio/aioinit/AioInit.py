@@ -22,9 +22,12 @@ class AioInitC():
 
     @classmethod
     async def init(cls, loop, **kwargs):
+        path = kwargs.get('log')['name']
+        if kwargs.get('log')['path'] is not None:
+            path = kwargs.get('log')['path'] + kwargs.get('log')['name']
         logging.basicConfig(level=logging.INFO,
                             format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
-                            filename=kwargs.get('log')['name'], filemode='w')
+                            filename=path, filemode='w')
         console = logging.StreamHandler()
         console.setLevel(logging.INFO)
         formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
