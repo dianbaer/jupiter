@@ -12,6 +12,11 @@ matrix:
           env: PYTHONASYNCIODEBUG=
           addons:
               mariadb: 10.1
+			  
+before_script:
+    - "mysql -e 'SELECT VERSION()'"
+    - "mysql -e 'DROP DATABASE IF EXISTS firstaioexample; create database firstaioexample  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;'"
+
 # command to install dependencies
 install: "pip install -r requirements.txt"
 # command to run tests
