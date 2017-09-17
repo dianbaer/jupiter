@@ -2,13 +2,14 @@
 
 [![Build Status](https://travis-ci.org/dianbaer/firstaio.svg?branch=master)](https://travis-ci.org/dianbaer/firstaio)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/41a11f5cfb4246f4bbe7937274f53ccd)](https://www.codacy.com/app/232365732/firstaio?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dianbaer/firstaio&amp;utm_campaign=Badge_Grade)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-FirstAIO一款异步IO的Web框架，使用FirstAIO开发者可以快速的开发高并发的Web项目。
+# FirstAIO一款基于Python的异步IO的Web框架，使用FirstAIO开发者可以快速的开发高并发的Web项目。
 
 FirstAIO包含：配置、异步IO-ORM、注解、日志、模板、异步IO-Http等功能。
 
 
-依赖：
+## 依赖：
 
 	jinja2
 		jinja2 markupsafe
@@ -30,7 +31,7 @@ FirstAIO包含：配置、异步IO-ORM、注解、日志、模板、异步IO-Htt
 		PyMySQL-0.7.11-py2.py3-none-any.whl
 	
 
-推荐环境：
+## 推荐环境：
 
 	MariaDB-10.1.22
 
@@ -39,44 +40,44 @@ FirstAIO包含：配置、异步IO-ORM、注解、日志、模板、异步IO-Htt
 	Python3.6
 
 
-快速开始(example\firstaio-example)：
+## 快速开始(example\firstaio-example)：
 
-	1、将firstaio文件夹考入项目根目录或者Python第三方插件目录site-packages
+>1、将firstaio文件夹考入项目根目录或者Python第三方插件目录site-packages
+
+>2、ConfigOverride.py：
+
+	配置文件，配置数据库与http相关参数
+
+>3、main.py：
+
+	运行文件
 	
-	2、ConfigOverride.py：
+>4、handler文件夹：
 
-		配置文件，配置数据库与http相关参数
-
-	3、main.py：
-
-		运行文件
-		
-	4、handler文件夹：
-
-		解析http相关注解的处理函数
-		
-	5、static文件夹：
-		
-		http静态内容文件夹
-		
-	6、templates文件夹：
-
-		模板文件夹（基于jinja2）
-		
-	7、model文件夹：
-
-		ORM映射类文件夹
-
-	8、执行指令：
-
-		python main.py
+	解析http相关注解的处理函数
 	
-	9、注册服务：
+>5、static文件夹：
+	
+	http静态内容文件夹
+	
+>6、templates文件夹：
+
+	模板文件夹（基于jinja2）
+	
+>7、model文件夹：
+
+	ORM映射类文件夹
+
+>8、执行指令：
+
+	python main.py
+	
+## 注册服务：
 		
-		执行registerervice.sh
-		
-		包含文件
-		firstaioexample.service
-		registerervice.sh
-		startservice.sh
+	执行registerervice.sh
+	
+	包含文件
+	firstaioexample.service
+	registerervice.sh
+	startservice.sh
 	
