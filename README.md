@@ -72,6 +72,69 @@ FirstAIO包含：配置、异步IO-ORM、注解、日志、模板、异步IO-Htt
 
 	python main.py
 	
+## 简单的例子
+
+>1、hello world
+
+	@get('/')
+	async def index():
+		return '<h1>hello world</h1>'
+
+>2、重定向
+
+	@get('/redirect')
+	async def redirect():
+		return 'redirect:http://www.threecss.com'
+
+>3、查数据库返回结果
+
+	@get('/examples')
+	async def getUsers():
+		r = await TestModelC.findAll()
+		return {
+			'examples': r
+		}
+		
+
+>4、使用模板
+
+@get('/templates')
+async def getTemplates():
+    return {
+        '__template__': 'blogs1.html',
+        '__user__': {
+            'name': 'firstaio'
+        },
+        'blogs': [
+            {
+                'id': uuid.uuid4().hex,
+                'name': 'firstaio作品展示',
+                'summary': 200,
+                'created_at': 1501006589.27344
+            },
+            {
+                'id': uuid.uuid4().hex,
+                'name': 'firstaio作品展示',
+                'summary': 200,
+                'created_at': 1501006589.27344
+            },
+            {
+                'id': uuid.uuid4().hex,
+                'name': 'firstaio作品展示',
+                'summary': 200,
+                'created_at': time.time()
+            }
+        ]
+
+    }
+	
+>5、获取参数及文件
+
+	@post('/api/examples')
+	async def api_register_user(request, *, userEmail, userName, userPassword, file=None):
+		logging.info('userEmail:%s,userName:%s,userPassword:%s,file:%s' % (userEmail, userName, userPassword, file))
+		return {'result': 'success'}
+	
 ## 注册服务：
 		
 	执行registerervice.sh
