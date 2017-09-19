@@ -33,6 +33,8 @@ FirstAIO包含：配置、异步IO-ORM、注解、日志、模板、异步IO-Htt
 
 ## 推荐环境：
 
+>快捷部署 https://github.com/dianbaer/deployment-server
+
 	MariaDB-10.1.22
 
 	CentOS-7-1611
