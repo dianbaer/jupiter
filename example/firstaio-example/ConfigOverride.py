@@ -10,13 +10,13 @@ firstAioExampleConfigOverride = {
     'http': {
         'host': '0.0.0.0',
         'port': 8080,
-        'templates': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\example\\firstaio-example\\templates',
-        'static': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\example\\firstaio-example\\static',
-        'handler': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\example\\firstaio-example\\handler',
+        'templates': 'D:\\github\\firstaio\\trunk\\example\\firstaio-example\\templates',
+        'static': 'D:\\github\\firstaio\\trunk\\example\\firstaio-example\\static',
+        'handler': 'D:\\github\\firstaio\\trunk\\example\\firstaio-example\\handler',
         'handler_pack': 'handler.'
     },
     'log': {
-        'path': 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\example\\firstaio-example\\',
+        'path': 'D:\\github\\firstaio\\trunk\\example\\firstaio-example\\',
         'name': 'py.log'
     }
 }
