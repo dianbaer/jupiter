@@ -1,17 +1,26 @@
+import pathlib
+import re
+
 from setuptools import setup
+
+here = pathlib.Path(__file__).parent
+
+def read(name):
+    fname = here / name
+    with fname.open() as f:
+        return f.read()
 
 
 setup(name='faster-http',
-      version='1.1',
+      version='1.2',
       description=("faster-http"),
-      long_description='faster-http',
+      long_description='\n\n'.join([read('README.rst'),
+                                    read('CHANGES.rst')]),
       classifiers=[
           'License :: OSI Approved :: Apache Software License',
           'Intended Audience :: Developers',
           'Programming Language :: Python',
           'Programming Language :: Python :: 3',
-          'Programming Language :: Python :: 3.4',
-          'Programming Language :: Python :: 3.5',
           'Programming Language :: Python :: 3.6',
           'Topic :: Internet :: WWW/HTTP',
           'Framework :: AsyncIO',
@@ -21,4 +30,5 @@ setup(name='faster-http',
       url='https://github.com/dianbaer/faster',
       license='MIT',
       packages=['faster_http'],
+	  install_requires=["aiohttp", "jinja2"],  
       include_package_data=False)
