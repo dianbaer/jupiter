@@ -3,7 +3,7 @@ import os
 
 import logging
 
-from firstaio.http.RequestHandler import RequestHandlerC
+from RequestHandler import RequestHandlerC
 
 
 class RouteC():
@@ -41,10 +41,3 @@ class RouteC():
         logging.info('add static %s => %s' % ('/static/', path))
         if app is not None:
             app.router.add_static('/static/', path)
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    RouteC.init(None, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\handler',
-                'firstaio.http.handler.')
-    RouteC.initStatic(None, 'C:\\Users\\admin\\Desktop\\github\\firstaio\\trunk\\firstaio\\firstaio\\http\\static')
