@@ -14,7 +14,7 @@ async def index():
 
 @get('/redirect')
 async def redirect():
-    return 'redirect:http://www.threecss.com'
+    return 'redirect:http://www.baidu.com'
 
 
 @get('/templates')
@@ -22,24 +22,24 @@ async def getTemplates():
     return {
         '__template__': 'blogs1.html',
         '__user__': {
-            'name': 'firstaio'
+            'name': 'faster'
         },
         'blogs': [
             {
                 'id': uuid.uuid4().hex,
-                'name': 'firstaio作品展示',
+                'name': 'faster作品展示',
                 'summary': 200,
                 'created_at': 1501006589.27344
             },
             {
                 'id': uuid.uuid4().hex,
-                'name': 'firstaio作品展示',
+                'name': 'faster作品展示',
                 'summary': 200,
                 'created_at': 1501006589.27344
             },
             {
                 'id': uuid.uuid4().hex,
-                'name': 'firstaio作品展示',
+                'name': 'faster作品展示',
                 'summary': 200,
                 'created_at': time.time()
             }
