@@ -96,19 +96,19 @@ TestHandler.py
 			'blogs': [
 				{
 					'id': uuid.uuid4().hex,
-					'name': 'firstaio作品展示',
+					'name': 'firstaio',
 					'summary': 200,
 					'created_at': 1501006589.27344
 				},
 				{
 					'id': uuid.uuid4().hex,
-					'name': 'firstaio作品展示',
+					'name': 'firstaio',
 					'summary': 200,
 					'created_at': 1501006589.27344
 				},
 				{
 					'id': uuid.uuid4().hex,
-					'name': 'firstaio作品展示',
+					'name': 'firstaio',
 					'summary': 200,
 					'created_at': time.time()
 				}
@@ -129,11 +129,11 @@ TestHandler.py
 			
 		
 
-1、hello world
+1.hello world
 http://localhost:8080/
-2、redirect
+2.redirect
 http://localhost:8080/redirect
-3、use template
+3.use template
 http://localhost:8080/templates
-4、注册页，发送post请求至/api/examples，可以接受参数与文件
+4.
 http://localhost:8080/register

@@ -12,7 +12,7 @@ def read(name):
 
 
 setup(name='faster-http',
-      version='1.2',
+      version='1.3',
       description=("faster-http"),
       long_description='\n\n'.join([read('README.rst'),
                                     read('CHANGES.rst')]),
