@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 setup(name='faster-http',
-      version='1.0',
+      version='1.1',
       description=("faster-http"),
       long_description='faster-http',
       classifiers=[
