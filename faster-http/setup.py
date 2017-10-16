@@ -11,10 +11,10 @@ def read(name):
         return f.read()
 
 
-setup(name='faster_http',
+setup(name='faster-http',
       version='1.0',
-      description=("faster_http"),
-      long_description="faster_http",
+      description=("faster-http"),
+      long_description="faster-http",
       classifiers=[
           'License :: OSI Approved :: Apache Software License',
           'Intended Audience :: Developers',
