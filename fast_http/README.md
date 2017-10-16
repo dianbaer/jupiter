@@ -44,14 +44,18 @@
 AioInit.py-----------启动类
 
 	import asyncio
+
 	import logging
+
 	from aiohttp import web
-	from faster_http.AuthFactory import auth_factory
-	from faster_http.Jinja2Filter import datetime_filter
-	from faster_http.Jinja2Setting import Jinja2SettingC
-	from faster_http.LoggerFactory import logger_factory
-	from faster_http.ResponseFactory import response_factory
-	from faster_http.Route import RouteC
+
+	from fast_http.AuthFactory import auth_factory
+	from fast_http.Jinja2Filter import datetime_filter
+	from fast_http.Jinja2Setting import Jinja2SettingC
+	from fast_http.LoggerFactory import logger_factory
+	from fast_http.ResponseFactory import response_factory
+	from fast_http.Route import RouteC
+
 
 	class AioInitC():
 		@classmethod
@@ -89,9 +93,9 @@ AioInit.py-----------启动类
 		http = {
 			'host': '0.0.0.0',
 			'port': 8080,
-			'templates': 'C:\\Users\\admin\\Desktop\\github\\faster\\trunk\\faster-http-test\\templates',
-			'static': 'C:\\Users\\admin\\Desktop\\github\\faster\\trunk\\faster-http-test\\static',
-			'handler': 'C:\\Users\\admin\\Desktop\\github\\faster\\trunk\\faster-http-test\\handler',
+			'templates': 'C:\\Users\\admin\\Desktop\\github\\fast\\trunk\\fast_http_test\\templates',
+			'static': 'C:\\Users\\admin\\Desktop\\github\\fast\\trunk\\fast_http_test\\static',
+			'handler': 'C:\\Users\\admin\\Desktop\\github\\fast\\trunk\\fast_http_test\\handler',
 			'handler_pack': 'handler.'
 		}
 		log = {
@@ -102,45 +106,52 @@ AioInit.py-----------启动类
 			http=http,
 			log=log
 		)
+
 		
 TestHandler.py----------注解类
 		
 	import uuid
+
 	import time
+
 	import logging
-	from faster_http.HttpDecorator import get, post
+
+	from fast_http.HttpDecorator import get, post
+
 
 	@get('/')
 	async def index():
 		return '<h1>hello world</h1>'
 
+
 	@get('/redirect')
 	async def redirect():
 		return 'redirect:http://www.baidu.com'
+
 
 	@get('/templates')
 	async def getTemplates():
 		return {
 			'__template__': 'blogs1.html',
 			'__user__': {
-				'name': 'faster'
+				'name': 'fast'
 			},
 			'blogs': [
 				{
 					'id': uuid.uuid4().hex,
-					'name': 'faster作品展示',
+					'name': 'fast',
 					'summary': 200,
 					'created_at': 1501006589.27344
 				},
 				{
 					'id': uuid.uuid4().hex,
-					'name': 'faster作品展示',
+					'name': 'fast',
 					'summary': 200,
 					'created_at': 1501006589.27344
 				},
 				{
 					'id': uuid.uuid4().hex,
-					'name': 'faster作品展示',
+					'name': 'fast',
 					'summary': 200,
 					'created_at': time.time()
 				}
@@ -148,16 +159,19 @@ TestHandler.py----------注解类
 
 		}
 
+
 	@get('/register')
 	async def register():
 		return {
 			'__template__': 'register1.html'
 		}
 
+
 	@post('/api/examples')
 	async def api_register_user(request, *, userEmail, userName, userPassword, file=None):
 		logging.info('userEmail:%s,userName:%s,userPassword:%s,file:%s' % (userEmail, userName, userPassword, file))
 		return {'result': 'success'}
+
 
 
 	
@@ -166,7 +180,7 @@ TestHandler.py----------注解类
 	执行registerervice.sh
 	
 	包含文件
-	fasterhttptest.service
+	fasthttptest.service
 	registerervice.sh
 	startservice.sh
 	
