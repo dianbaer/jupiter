@@ -22,24 +22,24 @@ async def getTemplates():
     return {
         '__template__': 'blogs1.html',
         '__user__': {
-            'name': 'faster'
+            'name': 'fast'
         },
         'blogs': [
             {
                 'id': uuid.uuid4().hex,
-                'name': 'faster作品展示',
+                'name': 'fast',
                 'summary': 200,
                 'created_at': 1501006589.27344
             },
             {
                 'id': uuid.uuid4().hex,
-                'name': 'faster作品展示',
+                'name': 'fast',
                 'summary': 200,
                 'created_at': 1501006589.27344
             },
             {
                 'id': uuid.uuid4().hex,
-                'name': 'faster作品展示',
+                'name': 'fast',
                 'summary': 200,
                 'created_at': time.time()
             }
