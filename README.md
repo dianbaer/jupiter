@@ -16,6 +16,10 @@ fast_http是一个AIO Web框架，扩展了aiohttp，增加扫描注解、过滤
 
 [fast_http如何使用](./fast_http)
 
+安装：
+	
+	pip install fast_http
+
 2、fast_orm
 
 fast_orm是一个AIO ORM框架，扩展了aiomysql，能够更便捷的操作数据库。
@@ -23,4 +27,9 @@ fast_orm是一个AIO ORM框架，扩展了aiomysql，能够更便捷的操作数
 例子：fast_orm_test
 
 [fast_orm如何使用](./fast_orm)
+
+
+安装：
+
+	pip install fast_orm
 	
