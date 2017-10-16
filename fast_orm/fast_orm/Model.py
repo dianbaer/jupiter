@@ -1,7 +1,7 @@
 import logging
 
-from firstaio.db.DBPool import DBPoolC
-from firstaio.db.ModelMetaclass import ModelMetaclassC
+from fast_orm.DBPool import DBPoolC
+from fast_orm.ModelMetaclass import ModelMetaclassC
 
 
 class ModelC(dict, metaclass=ModelMetaclassC):

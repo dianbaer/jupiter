@@ -1,4 +1,4 @@
-from firstaio.db.Field import FieldC
+from fast_orm.Field import FieldC
 
 
 class ModelMetaclassC(type):

@@ -3,10 +3,6 @@ import uuid
 import aiomysql
 import logging
 
-import asyncio
-
-import time
-
 
 class DBPoolC():
     @classmethod
@@ -83,21 +79,3 @@ class DBPoolC():
                     logging.info("uid:%s,DBPoolC.execute conn.rollback end " % (uid,))
                 raise
         return affected
-
-    @classmethod
-    async def testDBInit(cls, loop):
-
-        pool = await DBPoolC.init(loop, user='root', password='root', db='firstaioexample', port=3307, host='localhost',
-                                  autocommit=True)
-        rs = await DBPoolC.select("select * from example", (), 1)
-        logging.info(rs)
-        affectRow = await DBPoolC.execute("insert into example values(?,?,?,?,?,?,?)",
-                                          (uuid.uuid4().hex, 'name', time.time(), 2, 1111111111, 1111111111111,
-                                           'textxxxxxx'))
-        logging.info(affectRow)
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(DBPoolC.testDBInit(loop))

@@ -1,6 +1,3 @@
-import logging
-
-
 class FieldC():
     def __init__(self, name, column_type, primary_key, default):
         self.name = name
@@ -40,17 +37,3 @@ class DoubleFieldC(FieldC):
 class TextFieldC(FieldC):
     def __init__(self, name=None, default=None):
         super().__init__(name, 'text', False, default)
-
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    str1 = StringFieldC('111', True, 'xxxxxx', 'varchat(255)')
-    logging.info(str1)
-    bool1 = TinyIntFieldC('222')
-    logging.info(bool1)
-    int1 = IntFieldC('333')
-    logging.info(int1)
-    float1 = DoubleFieldC('444')
-    logging.info(float1)
-    text1 = TextFieldC('555')
-    logging.info(text1)
