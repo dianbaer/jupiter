@@ -1,24 +1,21 @@
 from setuptools import setup
 
-
-setup(name='faster-config',
+setup(name='fast_config',
       version='1.0',
-      description=("faster-config"),
-      long_description='faster-config',
+      description=("fast_config"),
+      long_description="fast_config",
       classifiers=[
           'License :: OSI Approved :: Apache Software License',
           'Intended Audience :: Developers',
           'Programming Language :: Python',
           'Programming Language :: Python :: 3',
-          'Programming Language :: Python :: 3.4',
-          'Programming Language :: Python :: 3.5',
           'Programming Language :: Python :: 3.6',
           'Topic :: Internet :: WWW/HTTP',
           'Framework :: AsyncIO',
       ],
       author='dianbaer',
       author_email='232365732@qq.com',
-      url='https://github.com/dianbaer/faster',
+      url='https://github.com/dianbaer/fast',
       license='MIT',
-      packages=['faster_config'],
+      packages=['fast_config'],
       include_package_data=False)
