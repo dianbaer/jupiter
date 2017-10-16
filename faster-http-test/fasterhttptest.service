@@ -1,0 +1,14 @@
+[Unit]
+Description=fasterhttptest
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/home/faster-http-test/fasterhttptest.pid
+ExecStart=/home/faster-http-test/startservice.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
