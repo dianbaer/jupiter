@@ -3,7 +3,7 @@ import os
 
 import logging
 
-from faster_http.RequestHandler import RequestHandlerC
+from fast_http.RequestHandler import RequestHandlerC
 
 
 class RouteC():

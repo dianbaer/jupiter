@@ -4,12 +4,12 @@ import logging
 
 from aiohttp import web
 
-from faster_http.AuthFactory import auth_factory
-from faster_http.Jinja2Filter import datetime_filter
-from faster_http.Jinja2Setting import Jinja2SettingC
-from faster_http.LoggerFactory import logger_factory
-from faster_http.ResponseFactory import response_factory
-from faster_http.Route import RouteC
+from fast_http.AuthFactory import auth_factory
+from fast_http.Jinja2Filter import datetime_filter
+from fast_http.Jinja2Setting import Jinja2SettingC
+from fast_http.LoggerFactory import logger_factory
+from fast_http.ResponseFactory import response_factory
+from fast_http.Route import RouteC
 
 
 class AioInitC():
@@ -48,9 +48,9 @@ if __name__ == '__main__':
     http = {
         'host': '0.0.0.0',
         'port': 8080,
-        'templates': 'C:\\Users\\admin\\Desktop\\github\\faster\\trunk\\faster-http-test\\templates',
-        'static': 'C:\\Users\\admin\\Desktop\\github\\faster\\trunk\\faster-http-test\\static',
-        'handler': 'C:\\Users\\admin\\Desktop\\github\\faster\\trunk\\faster-http-test\\handler',
+        'templates': 'C:\\Users\\admin\\Desktop\\github\\fast\\trunk\\fast_http_test\\templates',
+        'static': 'C:\\Users\\admin\\Desktop\\github\\fast\\trunk\\fast_http_test\\static',
+        'handler': 'C:\\Users\\admin\\Desktop\\github\\fast\\trunk\\fast_http_test\\handler',
         'handler_pack': 'handler.'
     }
     log = {

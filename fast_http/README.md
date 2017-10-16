@@ -1,12 +1,12 @@
-# faster-http
+# fast_http
 
 
 
-# faster-http是一个AIO Web框架，扩展了aiohttp，增加扫描注解、过滤、模板等功能。
+# fast_http是一个AIO Web框架，扩展了aiohttp，增加扫描注解、过滤、模板等功能。
 
 安装：
 
-	pip install faster_http
+	pip install fast_http
 	
 ## 依赖：
 
@@ -38,8 +38,8 @@
 
 ## 快速开始：
 
-	https://github.com/dianbaer/faster
-	faster-http-test项目
+	https://github.com/dianbaer/fast
+	fast_http_test项目
 
 AioInit.py-----------启动类
 

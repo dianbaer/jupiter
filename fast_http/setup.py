@@ -1,9 +1,9 @@
 from setuptools import setup
 
-setup(name='faster-http',
+setup(name='fast_http',
       version='1.0',
-      description=("faster-http"),
-      long_description="faster-http",
+      description=("fast_http"),
+      long_description="fast_http",
       classifiers=[
           'License :: OSI Approved :: Apache Software License',
           'Intended Audience :: Developers',
@@ -15,8 +15,8 @@ setup(name='faster-http',
       ],
       author='dianbaer',
       author_email='232365732@qq.com',
-      url='https://github.com/dianbaer/faster',
+      url='https://github.com/dianbaer/fast',
       license='MIT',
-      packages=['faster_http'],
+      packages=['fast_http'],
 	  install_requires=["aiohttp", "jinja2"],  
       include_package_data=False)

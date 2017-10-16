@@ -4,7 +4,7 @@ import time
 
 import logging
 
-from faster_http.HttpDecorator import get, post
+from fast_http.HttpDecorator import get, post
 
 
 @get('/')
