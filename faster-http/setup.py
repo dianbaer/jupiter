@@ -1,15 +1,4 @@
-import pathlib
-import re
-
 from setuptools import setup
-
-here = pathlib.Path(__file__).parent
-
-def read(name):
-    fname = here / name
-    with fname.open() as f:
-        return f.read()
-
 
 setup(name='faster-http',
       version='1.0',
