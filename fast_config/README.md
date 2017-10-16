@@ -4,6 +4,8 @@
 
 ## 快速开始：
 
+	pip install fast_config
+
 
 	firstAioConfigOverride = {
 		'db': {
