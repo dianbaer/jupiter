@@ -3,7 +3,9 @@
 
 # fast_orm是一个AIO ORM框架，扩展了aiomysql，能够更便捷的操作数据库。
 
+安装：
 
+	pip install fast_orm
 
 
 ## 依赖：
