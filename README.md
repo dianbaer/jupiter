@@ -1,54 +1,54 @@
-# fast
+# jupiter
 
-[![Build Status](https://travis-ci.org/dianbaer/fast.svg?branch=master)](https://travis-ci.org/dianbaer/fast)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ff28a43b3004a058f80e930a05df77d)](https://www.codacy.com/app/232365732/fast?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dianbaer/fast&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/dianbaer/jupiter.svg?branch=master)](https://travis-ci.org/dianbaer/jupiter)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ff28a43b3004a058f80e930a05df77d)](https://www.codacy.com/app/232365732/jupiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dianbaer/jupiter&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 
-# fast一个AIO web框架,能够快速开发高性能web项目。
+# jupiter一个AIO web框架,能够快速开发高性能web项目。
 
 
-### 1、fast_http
-
-安装：
-	
-	pip install fast_http
-	
-
-fast_http是一个AIO Web框架，扩展了aiohttp，增加扫描、注解、过滤、模板等功能。
-
-
-例子：fast_http_test
-
-
-[fast_http如何使用](./fast_http)
-
-
-
-2、fast_orm
+### 1、jupiter_http
 
 安装：
-
-	pip install fast_orm
+	
+	pip install jupiter_http
 	
 
-fast_orm是一个AIO ORM框架，扩展了aiomysql，能够通过对象操作数据库。
+jupiter_http是一个AIO Web框架，扩展了aiohttp，增加扫描、注解、过滤、模板等功能。
 
 
-例子：fast_orm_test
+例子：jupiter_http_test
 
 
-[fast_orm如何使用](./fast_orm)
+[jupiter_http如何使用](./jupiter_http)
 
 
-3、fast_config
+
+2、jupiter_orm
 
 安装：
 
-	pip install fast_config
+	pip install jupiter_orm
+	
+
+jupiter_orm是一个AIO ORM框架，扩展了aiomysql，能够通过对象操作数据库。
+
+
+例子：jupiter_orm_test
+
+
+[jupiter_orm如何使用](./jupiter_orm)
+
+
+3、jupiter_config
+
+安装：
+
+	pip install jupiter_config
 	
 	
-[fast_config如何使用](./fast_config)
+[jupiter_config如何使用](./jupiter_config)
 
 
 
