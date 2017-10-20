@@ -1,9 +1,9 @@
 from setuptools import setup
 
-setup(name='fast_http',
+setup(name='jupiter_http',
       version='1.0',
-      description=("fast_http"),
-      long_description="fast_http",
+      description=("jupiter_http"),
+      long_description="jupiter_http",
       classifiers=[
           'License :: OSI Approved :: Apache Software License',
           'Intended Audience :: Developers',
@@ -15,8 +15,8 @@ setup(name='fast_http',
       ],
       author='dianbaer',
       author_email='232365732@qq.com',
-      url='https://github.com/dianbaer/fast',
+      url='https://github.com/dianbaer/jupiter',
       license='MIT',
-      packages=['fast_http'],
+      packages=['jupiter_http'],
 	  install_requires=["aiohttp", "jinja2"],  
       include_package_data=False)
