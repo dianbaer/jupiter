@@ -1,7 +1,7 @@
 # jupiter
 
 [![Build Status](https://travis-ci.org/dianbaer/jupiter.svg?branch=master)](https://travis-ci.org/dianbaer/jupiter)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ff28a43b3004a058f80e930a05df77d)](https://www.codacy.com/app/232365732/jupiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dianbaer/jupiter&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c69b645d91f4407a74dcf1e56d67e52)](https://www.codacy.com/app/232365732/jupiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dianbaer/jupiter&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 
