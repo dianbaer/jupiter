@@ -1,0 +1,14 @@
+[Unit]
+Description=jupiterhttptest
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/home/jupiter_http_test/jupiterhttptest.pid
+ExecStart=/home/jupiter_http_test/startservice.sh
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
