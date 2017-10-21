@@ -25,7 +25,7 @@ jupiter_http是一个AIO Web框架，扩展了aiohttp，增加扫描、注解、
 
 
 
-2、jupiter_orm
+### 2、jupiter_orm
 
 安装：
 
@@ -41,7 +41,7 @@ jupiter_orm是一个AIO ORM框架，扩展了aiomysql，能够通过对象操作
 [jupiter_orm如何使用](./jupiter_orm)
 
 
-3、jupiter_config
+### 3、jupiter_config
 
 安装：
 
