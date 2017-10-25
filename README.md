@@ -8,6 +8,9 @@
 # jupiter一个AIO web框架,能够快速开发高性能web项目。
 
 
+https://github.com/dianbaer/jupiter
+
+
 ### 1、jupiter_http
 
 安装：
