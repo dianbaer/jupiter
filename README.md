@@ -24,7 +24,7 @@ jupiter_http是一个AIO Web框架，扩展了aiohttp，增加扫描、注解、
 例子：jupiter_http_test
 
 
-[jupiter_http如何使用](./jupiter_http)
+[jupiter_http了解更多](./jupiter_http)
 
 
 
@@ -41,7 +41,7 @@ jupiter_orm是一个AIO ORM框架，扩展了aiomysql，能够通过对象操作
 例子：jupiter_orm_test
 
 
-[jupiter_orm如何使用](./jupiter_orm)
+[jupiter_orm了解更多](./jupiter_orm)
 
 
 ### 3、jupiter_config
@@ -51,7 +51,7 @@ jupiter_orm是一个AIO ORM框架，扩展了aiomysql，能够通过对象操作
 	pip install jupiter_config
 	
 	
-[jupiter_config如何使用](./jupiter_config)
+[jupiter_config了解更多](./jupiter_config)
 
 
 
