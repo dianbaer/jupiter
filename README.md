@@ -24,12 +24,12 @@ https://gitee.com/dianbaer/firstaio
 
 jupiter_http是一个AIO Web框架，扩展了aiohttp，增加扫描注解、过滤、模板等功能。
 
-安装：
+>安装：
 	
 	pip install jupiter_http
 	
 	
-代码示例：
+>代码示例：
 
 	
 	@get('/')
@@ -97,12 +97,12 @@ jupiter_http是一个AIO Web框架，扩展了aiohttp，增加扫描注解、过
 jupiter_orm是一个AIO ORM框架，扩展了aiomysql，能够通过对象操作数据库。
 
 
-安装：
+>安装：
 
 	pip install jupiter_orm
 	
 
-代码示例：
+>代码示例：
 
 
 	class TestModelC(ModelC):
@@ -147,7 +147,7 @@ jupiter_orm是一个AIO ORM框架，扩展了aiomysql，能够通过对象操作
 
 ### 3、jupiter_config
 
-安装：
+>安装：
 
 	pip install jupiter_config
 	
