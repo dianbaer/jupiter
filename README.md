@@ -4,6 +4,8 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8c69b645d91f4407a74dcf1e56d67e52)](https://www.codacy.com/app/232365732/jupiter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dianbaer/jupiter&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+### 答疑、问题反馈QQ群：537982451
+
 
 ## jupiter是一个AIO web框架,能够快速开发高性能web项目。支持扫描注解、过滤、模板、ORM等。
 
