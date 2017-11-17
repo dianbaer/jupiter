@@ -57,7 +57,7 @@ async def redirect():
     return 'redirect:http://www.baidu.com'
 ```
 4、POST请求，携带文件是表单请求，不携带文件是json请求（都支持，关键字``file``是表单中提取的文件）
-```
+```python
 @post('/api/examples')
 async def api_register_user(request, *, userEmail, userName, userPassword, file=None):
     logging.info('userEmail:%s,userName:%s,userPassword:%s,file:%s' 
