@@ -19,7 +19,7 @@
 ```
 pip install jupiter_http
 ```
-**使用场景**：开发web项目，并且不想使用django、flask这些基于Python多线程的web框架时可以使用。
+**使用场景**：开发web项目，想采取异步事件驱动模型，不想使用django、flask这些基于Python多线程的web框架时可以使用。
 
 [>>>>>>性能比较网址](http://klen.github.io/py-frameworks-bench/)
 	
@@ -74,112 +74,85 @@ async def api_register_user(request, *, userEmail, userName, userPassword, file=
 
 
 
-[jupiter_http详细介绍](./jupiter_http)
 
 
 
-### 2、jupiter_orm
 
+### 2、jupiter_orm（aio ORM框架）
 
-jupiter_orm是一个AIO ORM框架，扩展了aiomysql，能够通过对象操作数据库。
+**介绍**：基于aiomysql，扩展了ORM操作数据库方式。
 
+**安装**：
+```
+pip install jupiter_orm
+```
+**使用场景**：操作数据库，想采取异步事件驱动模型，而非阻塞式操作数据库。
 
->安装：
+**示例代码**：
 
-	pip install jupiter_orm
+1、创建实体类，继承ModelC
+```python
+class TestModelC(ModelC):
+    __table__ = 'example'
+
+    id = StringFieldC(primary_key=True, default=uuid.uuid4().hex, ddl='varchar(64)')
+    name = StringFieldC(ddl='varchar(255)')
+    create_time = DoubleFieldC(default=time.time)
+    status = TinyIntFieldC()
+    num = IntFieldC()
+    price = BigIntFieldC()
+    content = TextFieldC()
+```
+2、查询列表
+```python
+rs = await TestModelC.findAll(where="name='name'", limit=(0, 5), orderBy='id')
+```
+3、查询数量
+```python
+num = await TestModelC.findNumber('count(id)', where="name='name'")
+```
+4、根据主键查询
+```python
+user = await TestModelC.find('cd3dc2dab4b940a5b4dde8318a27a9d7')
+```
+5、插入
+```python
+testModel = TestModelC(id=uuid.uuid4().hex, name='name', status=2, num=123, price=111111111119,
+					   content='xxxxxxx')
+result = await testModel.save()
+```
+6、修改
+```python
+testModel.name = '23277732'
+result = await testModel.update()
+```
+7、删除
+```python
+testModel1 = TestModelC(id=testModel.id)
+result = await testModel1.remove()
+```
+8、jupiter_orm的Demo（创建jupiterormtest.sql数据库，修改DBUnit.py配置，然后启动此文件即可）
 	
-
->代码示例：
-
-
-	class TestModelC(ModelC):
-		__table__ = 'example'
-
-		id = StringFieldC(primary_key=True, default=uuid.uuid4().hex, ddl='varchar(64)')
-		name = StringFieldC(ddl='varchar(255)')
-		create_time = DoubleFieldC(default=time.time)
-		status = TinyIntFieldC()
-		num = IntFieldC()
-		price = BigIntFieldC()
-		content = TextFieldC()
-		
-
-	rs = await TestModelC.findAll(where="name='name'", limit=(0, 5), orderBy='id')
-	logging.info(rs)
-	num = await TestModelC.findNumber('count(id)', where="name='name'")
-	logging.info(num)
-	user = await TestModelC.find('cd3dc2dab4b940a5b4dde8318a27a9d7')
-	logging.info(user)
-	testModel = TestModelC(id=uuid.uuid4().hex, name='name', status=2, num=123, price=111111111119,
-						   content='xxxxxxx')
-	result = await testModel.save()
-	logging.info(result)
-	testModel.name = '23277732'
-	result = await testModel.update()
-	logging.info(result)
-	testModel1 = TestModelC(id=testModel.id)
-	result = await testModel1.remove()
-	logging.info(result)
-	
-
->例子：
+[>>>>>>jupiter_orm的Demo](./jupiter_orm_test)
 
 
-[jupiter_orm_test](./jupiter_orm_test)
-
-
-[jupiter_orm详细介绍](./jupiter_orm)
+------
 
 
 
-### 3、jupiter_config
+## 更多详细介绍
 
->安装：
+[>>>>>>jupiter_http详细介绍](./jupiter_http)
 
-	pip install jupiter_config
-	
-	
-[jupiter_config详细介绍](./jupiter_config)
+[>>>>>>jupiter_orm详细介绍](./jupiter_orm)
 
+[>>>>>>jupiter_config详细介绍](./jupiter_config)
 
+## jupiter地址：
 
+[>>>>>>github](https://github.com/dianbaer/jupiter)
 
-### 上传至pypi
-
-
-	windows 创建文件
-
-	type NUL > .pypirc
-
-	.pypric文件放入home目录下
-
-		[distutils]
-		index-servers =
-		  pypi
-
-		[pypi]
-		repository=https://pypi.python.org/pypi
-		username=your_username
-		password=your_password
-
-	检查	
-	python setup.py check
-
-	打包
-	python setup.py sdist
-
-	上传
-	python setup.py sdist upload -r pypi
+[>>>>>>码云](https://gitee.com/dianbaer/firstaio)
 
 
-
-## github：
-
-
-https://github.com/dianbaer/jupiter
-
-
-## 码云：
-
-https://gitee.com/dianbaer/firstaio
 	

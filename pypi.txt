@@ -1,0 +1,26 @@
+### 上传至pypi
+
+
+	windows 创建文件
+
+	type NUL > .pypirc
+
+	.pypric文件放入home目录下
+
+		[distutils]
+		index-servers =
+		  pypi
+
+		[pypi]
+		repository=https://pypi.python.org/pypi
+		username=your_username
+		password=your_password
+
+	检查	
+	python setup.py check
+
+	打包
+	python setup.py sdist
+
+	上传
+	python setup.py sdist upload -r pypi
