@@ -30,7 +30,7 @@ async def getTemplates():
             },
             {
                 'id': uuid.uuid4().hex,
-                'name': 'fast',
+                'name': 'jupiter',
                 'summary': 200,
                 'created_at': 1501006589.27344
             },
