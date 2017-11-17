@@ -60,7 +60,8 @@ async def redirect():
 ```
 @post('/api/examples')
 async def api_register_user(request, *, userEmail, userName, userPassword, file=None):
-    logging.info('userEmail:%s,userName:%s,userPassword:%s,file:%s' % (userEmail, userName, userPassword, file))
+    logging.info('userEmail:%s,userName:%s,userPassword:%s,file:%s' 
+	% (userEmail, userName, userPassword, file))
     return {'result': 'success'}
 ```
 
