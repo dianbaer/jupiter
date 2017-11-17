@@ -1,9 +1,6 @@
 import uuid
-
 import time
-
 import logging
-
 from jupiter_http.HttpDecorator import get, post
 
 
@@ -22,12 +19,12 @@ async def getTemplates():
     return {
         '__template__': 'blogs1.html',
         '__user__': {
-            'name': 'fast'
+            'name': 'jupiter'
         },
         'blogs': [
             {
                 'id': uuid.uuid4().hex,
-                'name': 'fast',
+                'name': 'jupiter',
                 'summary': 200,
                 'created_at': 1501006589.27344
             },
@@ -39,12 +36,11 @@ async def getTemplates():
             },
             {
                 'id': uuid.uuid4().hex,
-                'name': 'fast',
+                'name': 'jupiter',
                 'summary': 200,
                 'created_at': time.time()
             }
         ]
-
     }
 
 

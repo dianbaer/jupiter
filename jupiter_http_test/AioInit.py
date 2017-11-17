@@ -44,17 +44,16 @@ class AioInitC():
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
     http = {
         'host': '0.0.0.0',
         'port': 8080,
-        'templates': 'D:\\github\\jupiter\\trunk\\jupiter_http_test\\templates',
-        'static': 'D:\\github\\jupiter\\trunk\\jupiter_http_test\\static',
-        'handler': 'D:\\github\\jupiter\\trunk\\jupiter_http_test\\handler',
+        'templates': 'C:\\Users\\admin\\Desktop\\github\\jupiter\\trunk\\jupiter_http_test\\templates',
+        'static': 'C:\\Users\\admin\\Desktop\\github\\jupiter\\trunk\\jupiter_http_test\\static',
+        'handler': 'C:\\Users\\admin\\Desktop\\github\\jupiter\\trunk\\jupiter_http_test\\handler',
         'handler_pack': 'handler.'
     }
     log = {
-        'path': None,
+        'path': 'C:\\Users\\admin\\Desktop\\github\\jupiter\\trunk\\jupiter_http_test\\',
         'name': 'py.log'
     }
     AioInitC.run(

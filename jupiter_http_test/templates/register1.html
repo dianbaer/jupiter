@@ -1,24 +1,16 @@
 {% extends '__base1__.html' %}
 {% block meta %}
-    <meta name="description" content="firstaio">
+    <meta name="description" content="jupiter">
 {% endblock %}
 {% block title %}注册{% endblock %}
 {% block beforehead %}
+    <script src="/static/js/app/Url.js"></script>
+    <script src="/static/js/app/data/http/DemoProxy.js"></script>
+    <script src="/static/js/app/RegisterMediator.js"></script>
     <script type="text/javascript">
-        //初始化内部类
-        $T.version.init();
-        $T.version.loadScript("/static/js/app/NotificationExt.js");
-        $T.version.loadScript("/static/js/app/Url.js");
-        $T.version.loadScript("/static/js/app/data/http/DemoProxy.js");
-        $T.version.loadScript("/static/js/app/RegisterMediator.js");
         window.onload = function () {
-            //初始化过滤器
-            var testFilter = new TestFilter();
-            $T.httpResultFilter.addFilter(testFilter);
-            //初始化控制器
-            $T.registerMediator.init();
-            $T.register.register($T.registerMediator);
-
+            var mediator = new jupiter.RegisterMediator();
+            mediator.initView();
         }
     </script>
 {% endblock %}
