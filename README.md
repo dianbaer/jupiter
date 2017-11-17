@@ -5,86 +5,72 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 
-## jupiter是一个AIO web框架,能够快速开发高性能web项目。支持扫描注解、过滤、模板、ORM等。
+## jupiter是一个aio web框架，基于aiohttp。支持（restful格式、扫描注解、依赖注入、jinja2模板引擎、ORM框架）等。
 
+## 核心组件介绍
 
-## github：
+--------------
 
+### 1、jupiter_http（aio web框架）
 
-https://github.com/dianbaer/jupiter
+**介绍**：基于aiohttp，扩展了``扫描注解``、``依赖注入``、``jinja2模板引擎``，支持各种请求方式。采取异步事件驱动充分发挥CPU性能。
 
+**安装**：
+```
+pip install jupiter_http
+```
+**使用场景**：开发web项目，并且不想使用django、flask这些基于Python多线程的web框架时可以使用。
 
-## 码云：
-
-https://gitee.com/dianbaer/firstaio
-
-
-### 1、jupiter_http
-
-
-jupiter_http是一个AIO Web框架，扩展了aiohttp，增加扫描注解、过滤、模板等功能。
-
->安装：
+[>>>>>>性能比较网址](http://klen.github.io/py-frameworks-bench/)
 	
-	pip install jupiter_http
-	
-	
->代码示例：
+**示例代码**：
 
-	
-	@get('/')
-	async def index():
-		return '<h1>hello world</h1>'
+1、返回html（get请求）
+```python
+@get('/')
+async def index():
+    return '<h1>hello world</h1>'
+```
+2、返回jinja2模板，模板是blogs1.html并携带__user__与blogs参数注入模板（get请求）
+```python
+@get('/templates')
+async def getTemplates():
+    return {
+        '__template__': 'blogs1.html',
+        '__user__': {
+            'name': 'jupiter'
+        },
+        'blogs': [
+            {
+                'id': uuid.uuid4().hex,
+                'name': 'jupiter',
+                'summary': 200,
+                'created_at': 1501006589.27344
+            }
+        ]
+    }
+```
+3、跳转，携带关键字``redirect:``可以进行跳转（get请求）
+```python
+@get('/redirect')
+async def redirect():
+    return 'redirect:http://www.baidu.com'
+```
+4、POST请求，携带文件是表单请求，不携带文件是json请求（都支持，关键字``file``是表单中提取的文件）
+```
+@post('/api/examples')
+async def api_register_user(request, *, userEmail, userName, userPassword, file=None):
+    logging.info('userEmail:%s,userName:%s,userPassword:%s,file:%s' % (userEmail, userName, userPassword, file))
+    return {'result': 'success'}
+```
 
-	@get('/redirect')
-	async def redirect():
-		return 'redirect:http://www.baidu.com'
+5、jupiter_http框架的Demo（配置AioInit.py文件，然后启动此文件即可）
 
-	@get('/templates')
-	async def getTemplates():
-		return {
-			'__template__': 'blogs1.html',
-			'__user__': {
-				'name': 'fast'
-			},
-			'blogs': [
-				{
-					'id': uuid.uuid4().hex,
-					'name': 'fast',
-					'summary': 200,
-					'created_at': 1501006589.27344
-				},
-				{
-					'id': uuid.uuid4().hex,
-					'name': 'fast',
-					'summary': 200,
-					'created_at': 1501006589.27344
-				},
-				{
-					'id': uuid.uuid4().hex,
-					'name': 'fast',
-					'summary': 200,
-					'created_at': time.time()
-				}
-			]
-		}
+[>>>>>>jupiter_http框架的Demo](./jupiter_http_test)
 
-	@get('/register')
-	async def register():
-		return {
-			'__template__': 'register1.html'
-		}
-
-	@post('/api/examples')
-	async def api_register_user(request, *, userEmail, userName, userPassword, file=None):
-		logging.info('userEmail:%s,userName:%s,userPassword:%s,file:%s' % (userEmail, userName, userPassword, file))
-		return {'result': 'success'}
+----------------
 
 
->例子：
-
-
-[jupiter_http_test](./jupiter_http_test)
 
 
 [jupiter_http详细介绍](./jupiter_http)
@@ -186,4 +172,13 @@ jupiter_orm是一个AIO ORM框架，扩展了aiomysql，能够通过对象操作
 
 
 
+## github：
+
+
+https://github.com/dianbaer/jupiter
+
+
+## 码云：
+
+https://gitee.com/dianbaer/firstaio
 	
