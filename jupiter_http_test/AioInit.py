@@ -47,13 +47,13 @@ if __name__ == '__main__':
     http = {
         'host': '0.0.0.0',
         'port': 8080,
-        'templates': 'C:\\Users\\admin\\Desktop\\github\\jupiter\\trunk\\jupiter_http_test\\templates',
-        'static': 'C:\\Users\\admin\\Desktop\\github\\jupiter\\trunk\\jupiter_http_test\\static',
-        'handler': 'C:\\Users\\admin\\Desktop\\github\\jupiter\\trunk\\jupiter_http_test\\handler',
+        'templates': 'C:\\Users\\23236\\Desktop\\github\\jupiter\\jupiter_http_test\\templates',
+        'static': 'C:\\Users\\23236\\Desktop\\github\\jupiter\\jupiter_http_test\\static',
+        'handler': 'C:\\Users\\23236\\Desktop\\github\\jupiter\\jupiter_http_test\\handler',
         'handler_pack': 'handler.'
     }
     log = {
-        'path': 'C:\\Users\\admin\\Desktop\\github\\jupiter\\trunk\\jupiter_http_test\\',
+        'path': 'C:\\Users\\23236\\Desktop\\github\\jupiter\\jupiter_http_test\\',
         'name': 'py.log'
     }
     AioInitC.run(
